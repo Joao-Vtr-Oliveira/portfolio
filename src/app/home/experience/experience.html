@@ -1,9 +1,9 @@
 <section class="w-full px-4 py-10">
 	<div class="mx-auto max-w-7xl">
-		<h2 class="text-3xl font-bold text-center mb-10 text-blue-500">Meus Projetos</h2>
+		<h2 class="text-3xl font-bold text-center mb-10 text-blue-500">Experiência Profissional</h2>
 
-		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-			@for (project of projects(); track project.id) {
+		<div class="">
+			@for (experience of experiences(); track experience.id) {
 
 			<mat-card
 				appearance="outlined"
@@ -11,21 +11,21 @@
 			>
 				<img
 					mat-card-image
-					[src]="project.imgSrc"
-					[alt]="project.name + ' imagem'"
+					[src]="experience.imgSrc"
+					[alt]="experience.name + ' imagem'"
 					class="h-80 object-cover w-full "
 				/>
 
 				<mat-card-header>
 					<mat-card-title class="text-lg font-semibold">{{
-						project.name
+						experience.name
 					}}</mat-card-title>
 				</mat-card-header>
 
 				<mat-card-content class="px-4 pb-4">
 					<pre
 						class="whitespace-pre-wrap break-words text-sm text-gray-700 dark:text-gray-300"
-						>{{ project.bio }}
+						>{{ experience.bio }}
 					</pre
 					>
 				</mat-card-content>
@@ -33,8 +33,8 @@
 				
 				<div class="px-4 mt-2">
 					<img
-						[src]="project.tech"
-						[alt]="project.name + ' stack'"
+						[src]="experience.tech"
+						[alt]="experience.name + ' stack'"
 						class="w-full h-8 object-contain"
 						loading="lazy"
 					/>
@@ -42,9 +42,8 @@
 
 				<!-- Botões de ação -->
 				<mat-card-actions align="end" class="px-4 pb-4">
-					<a mat-button [href]="project.repoLink" target="_blank">GitHub</a>
-					@if (project.deployLink) {
-					<a mat-button [href]="project.deployLink" target="_blank">Page</a>
+					@if (experience.deployLink) {
+					<a mat-button [href]="experience.deployLink" target="_blank">Page</a>
 					}
 				</mat-card-actions>
 			</mat-card>
