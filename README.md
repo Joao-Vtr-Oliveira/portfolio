@@ -1,4 +1,4 @@
-# Pomodoro
+# Portfolio
 
 <div align="center">
   <p><strong>Tecnologias utilizadas:</strong></p>
