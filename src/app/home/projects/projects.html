@@ -1,6 +1,8 @@
 <section class="w-full px-4 py-10">
 	<div class="mx-auto max-w-7xl">
-		<h2 class="text-3xl font-bold text-center mb-10 text-blue-500">Meus Projetos</h2>
+		<h2 class="text-3xl font-bold text-center mb-10 text-blue-500">
+			Meus Projetos
+		</h2>
 
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 			@for (project of projects(); track project.id) {
@@ -13,7 +15,7 @@
 					mat-card-image
 					[src]="project.imgSrc"
 					[alt]="project.name + ' imagem'"
-					class="h-80 object-cover w-full "
+					class="h-80 object-cover w-full"
 				/>
 
 				<mat-card-header>
@@ -30,7 +32,6 @@
 					>
 				</mat-card-content>
 
-				
 				<div class="px-4 mt-2">
 					<img
 						[src]="project.tech"
@@ -41,10 +42,30 @@
 				</div>
 
 				<!-- Botões de ação -->
-				<mat-card-actions align="end" class="px-4 pb-4">
-					<a mat-button [href]="project.repoLink" target="_blank">GitHub</a>
+				<mat-card-actions align="end" class="px-4 pb-4 mt-3 gap-3">
+					<a
+						matFab
+						extended
+						class="customBtn"
+						[href]="project.repoLink"
+						target="_blank"
+					>
+						<span class="flex items-center gap-2">
+							<app-icon name="github" />
+							Github
+						</span>
+					</a>
 					@if (project.deployLink) {
-					<a mat-button [href]="project.deployLink" target="_blank">Page</a>
+					<a
+						class="customBtn"
+						matFab
+						extended
+						[href]="project.deployLink"
+						target="_blank"
+					>
+						<mat-icon>link</mat-icon>
+						Page
+					</a>
 					}
 				</mat-card-actions>
 			</mat-card>
