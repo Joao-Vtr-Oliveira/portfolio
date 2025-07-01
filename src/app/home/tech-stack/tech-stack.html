@@ -1,47 +1,86 @@
-<section class="w-full px-4 py-10 ">
+<section class="w-full px-4 py-12">
 	<div class="max-w-5xl mx-auto text-center">
-		<h2 class="text-3xl font-bold text-blue-600 mb-6">
+		<h2 class="text-3xl font-bold mb-6">
 			Tech Stack
 		</h2>
-		<p class="mb-12 text-sm sm:text-base">
-			Estas são as principais tecnologias e ferramentas com as quais trabalho no
-			meu dia a dia de desenvolvimento.
+		<p class=" mb-12 text-sm sm:text-base">
+			Tecnologias e ferramentas que utilizo frequentemente no desenvolvimento
+			web.
 		</p>
 
 		<div
-			class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left "
+			class="grid grid-cols-1 md:grid-cols-3 gap-8"
 		>
-			<!-- Front-end -->
-			<div class="flex flex-col items-center gap-3">
-				<h3 class="text-xl font-semibold mb-2">Front-end</h3>
-				<img
-					[src]="frontendIcons"
-					alt="Frontend icons"
-					class="w-full max-w-xs object-contain"
-					loading="lazy"
-				/>
+			<!-- Frontend -->
+			<div>
+				<h3 class="text-xl font-semibold mb-4 text-center">Front-end</h3>
+				<div class="flex flex-wrap justify-center gap-4">
+					@for (tech of frontendIcons; track tech.name) {
+					<div
+						class="relative group hover:scale-105 transition-transform duration-200"
+					>
+						<img
+							[src]="'https://skillicons.dev/icons?i=' + tech.icon"
+							[alt]="tech.name"
+							class="h-10"
+							loading="lazy"
+						/>
+						<span
+							class="absolute top-[-1.75rem] left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-gray-800 text-white"
+						>
+							{{ tech.name }}
+						</span>
+					</div>
+					}
+				</div>
 			</div>
 
-			<!-- Back-end -->
-			<div class="flex flex-col items-center gap-3">
-				<h3 class="text-xl font-semibold mb-2">Back-end</h3>
-				<img
-					[src]="backendIcons"
-					alt="Backend icons"
-					class="w-full max-w-xs object-contain"
-					loading="lazy"
-				/>
+			<!-- Backend -->
+			<div>
+				<h3 class="text-xl font-semibold mb-4 text-center">Back-end</h3>
+				<div class="flex flex-wrap justify-center gap-4">
+					@for (tech of backendIcons; track tech.name) {
+					<div
+						class="relative group hover:scale-105 transition-transform duration-200"
+					>
+						<img
+							[src]="'https://skillicons.dev/icons?i=' + tech.icon"
+							[alt]="tech.name"
+							class="h-10"
+							loading="lazy"
+						/>
+						<span
+							class="absolute top-[-1.75rem] left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-gray-800 text-white"
+						>
+							{{ tech.name }}
+						</span>
+					</div>
+					}
+				</div>
 			</div>
 
 			<!-- Tools -->
-			<div class="flex flex-col items-center gap-3">
-				<h3 class="text-xl font-semibold mb-2">Ferramentas</h3>
-				<img
-					[src]="toolsIcons"
-					alt="Tools icons"
-					class="w-full max-w-xs object-contain"
-					loading="lazy"
-				/>
+			<div>
+				<h3 class="text-xl font-semibold mb-4 text-center">Ferramentas</h3>
+				<div class="flex flex-wrap justify-center gap-4">
+					@for (tech of toolsIcons; track tech.name) {
+					<div
+						class="relative group hover:scale-105 transition-transform duration-200"
+					>
+						<img
+							[src]="'https://skillicons.dev/icons?i=' + tech.icon"
+							[alt]="tech.name"
+							class="h-10"
+							loading="lazy"
+						/>
+						<span
+							class="absolute top-[-1.75rem] left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-gray-800 text-white"
+						>
+							{{ tech.name }}
+						</span>
+					</div>
+					}
+				</div>
 			</div>
 		</div>
 	</div>
