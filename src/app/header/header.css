@@ -1,0 +1,10 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.minha-toolbar {
+  background-color: #673ab7; /* roxo escuro */
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
