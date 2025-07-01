@@ -3,6 +3,8 @@
 }
 
 .minha-toolbar {
+  display: flex;
+  justify-content: space-around;
   background-color: #673ab7; /* roxo escuro */
   color: white;
   font-weight: bold;

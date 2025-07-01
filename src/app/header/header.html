@@ -1,15 +1,27 @@
 <mat-toolbar class="minha-toolbar">
-  <div class='flex items-center' (click)="goTo('/')">
-    <button matIconButton class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>home</mat-icon>
-    </button>
-    <span>João Vitor De Oliveira</span>
-  </div>
-  <span class="example-spacer"></span>
-  <!-- <button matIconButton class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button matIconButton class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button> -->
+	<div class="flex items-center" (click)="goTo('/')">
+		<button
+			matIconButton
+			class="example-icon"
+			aria-label="Example icon-button with menu icon"
+		>
+			<mat-icon>home</mat-icon>
+		</button>
+		<span>João Vitor De Oliveira</span>
+	</div>
+	<div>
+		<a href="https://github.com/Joao-Vtr-Oliveira" target="_blank">
+			<button class='hover:!text-gray-500 duration-150' matIconButton>
+				<app-icon name="github" class="h-8" />
+			</button>
+		</a>
+		<a
+			href="https://www.linkedin.com/in/jo%C3%A3o-vitor-oliveira-b8b190252/"
+			target="_blank"
+		>
+			<button matIconButton class="group hover:!text-blue-600 duration-150">
+				<app-icon name="linkedin" class="h-8 text-inherit" />
+			</button>
+		</a>
+	</div>
 </mat-toolbar>
