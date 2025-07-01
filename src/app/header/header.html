@@ -1,4 +1,4 @@
-<mat-toolbar class="minha-toolbar">
+<mat-toolbar class="minha-toolbar justify-between px-4">
 	<div class="flex items-center" (click)="goTo('/')">
 		<span
 			class="text-lg sm:text-xl font-semibold text-white hover:text-[#c3b3d8] cursor-pointer transition-colors duration-200"
@@ -8,9 +8,35 @@
 		</span>
 	</div>
 
+	<nav class="hidden lg:flex gap-6 text-white text-sm">
+		<a (click)="scrollTo('home')" class="hover:text-[#c3b3d8] transition-colors cursor-pointer"
+			>Início</a
+		>
+		<a
+			(click)="scrollTo('experiencia')"
+			class="hover:text-[#c3b3d8] transition-colors cursor-pointer"
+			>Experiência</a
+		>
+		<a
+			(click)="scrollTo('projetos')"
+			class="hover:text-[#c3b3d8] transition-colors cursor-pointer"
+			>Projetos</a
+		>
+		<a
+			(click)="scrollTo('tecnologias')"
+			class="hover:text-[#c3b3d8] transition-colors cursor-pointer"
+			>Tecnologias</a
+		>
+		<a
+			(click)="scrollTo('contato')"
+			class="hover:text-[#c3b3d8] transition-colors cursor-pointer"
+			>Contato</a
+		>
+	</nav>
+
 	<div class="hidden sm:flex space-x-2">
 		<a href="https://github.com/Joao-Vtr-Oliveira" target="_blank">
-			<button class="hover:!text-gray-500 duration-150" matIconButton>
+			<button class="hover:!text-gray-400 duration-150" matIconButton>
 				<app-icon name="github" class="h-8" />
 			</button>
 		</a>
@@ -18,18 +44,14 @@
 			href="https://www.linkedin.com/in/jo%C3%A3o-vitor-oliveira-b8b190252/"
 			target="_blank"
 		>
-			<button matIconButton class="group hover:!text-blue-600 duration-150">
+			<button matIconButton class="group hover:!text-blue-500 duration-150">
 				<app-icon name="linkedin" class="h-8 text-inherit" />
 			</button>
 		</a>
 	</div>
 
-	<div class="block sm:hidden">
-		<button
-			matIconButton
-			class="example-icon"
-			aria-label="Example icon-button with menu icon"
-		>
+	<div class="block lg:hidden">
+		<button matIconButton class="example-icon" aria-label="Menu">
 			<mat-icon>menu</mat-icon>
 		</button>
 	</div>

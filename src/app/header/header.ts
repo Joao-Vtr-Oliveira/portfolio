@@ -17,4 +17,15 @@ export class Header {
   goTo(route: string) {
     this.router.navigate([route]);
   }
+
+  scrollTo(targetId: string) {
+	const target = document.getElementById(targetId);
+	if (target) {
+		target.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start',
+		});
+	}
+}
+
 }
