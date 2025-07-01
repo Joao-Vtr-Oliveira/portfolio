@@ -1,17 +1,15 @@
 <mat-toolbar class="minha-toolbar">
 	<div class="flex items-center" (click)="goTo('/')">
-		<button
-			matIconButton
-			class="example-icon"
-			aria-label="Example icon-button with menu icon"
+		<span
+			class="text-lg sm:text-xl font-semibold text-white hover:text-[#c3b3d8] cursor-pointer transition-colors duration-200"
 		>
-			<mat-icon>home</mat-icon>
-		</button>
-		<span>João Vitor De Oliveira</span>
+			João Vitor <span class="hidden sm:inline">de Oliveira</span>
+		</span>
 	</div>
-	<div>
+
+	<div class="hidden sm:flex space-x-2">
 		<a href="https://github.com/Joao-Vtr-Oliveira" target="_blank">
-			<button class='hover:!text-gray-500 duration-150' matIconButton>
+			<button class="hover:!text-gray-500 duration-150" matIconButton>
 				<app-icon name="github" class="h-8" />
 			</button>
 		</a>
@@ -23,5 +21,15 @@
 				<app-icon name="linkedin" class="h-8 text-inherit" />
 			</button>
 		</a>
+	</div>
+
+	<div class="block sm:hidden">
+		<button
+			matIconButton
+			class="example-icon"
+			aria-label="Example icon-button with menu icon"
+		>
+			<mat-icon>menu</mat-icon>
+		</button>
 	</div>
 </mat-toolbar>
