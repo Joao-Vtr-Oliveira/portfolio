@@ -1,6 +1,8 @@
 <section class="w-full px-4 py-10">
 	<div class="mx-auto max-w-7xl">
-		<h2 class="text-3xl font-bold text-center mb-10 text-blue-500">Experiência Profissional</h2>
+		<h2 class="text-3xl font-bold text-center mb-10 text-blue-500">
+			Experiência Profissional
+		</h2>
 
 		<div class="">
 			@for (experience of experiences(); track experience.id) {
@@ -13,7 +15,7 @@
 					mat-card-image
 					[src]="experience.imgSrc"
 					[alt]="experience.name + ' imagem'"
-					class="h-80 object-cover w-full "
+					class="h-80 object-cover w-full"
 				/>
 
 				<mat-card-header>
@@ -30,7 +32,6 @@
 					>
 				</mat-card-content>
 
-				
 				<div class="px-4 mt-2">
 					<img
 						[src]="experience.tech"
@@ -43,7 +44,10 @@
 				<!-- Botões de ação -->
 				<mat-card-actions align="end" class="px-4 pb-4">
 					@if (experience.deployLink) {
-					<a mat-button [href]="experience.deployLink" target="_blank">Page</a>
+					<a class='customBtn' matFab extended [href]="experience.deployLink" target="_blank">
+						<mat-icon>link</mat-icon>
+						Page
+					</a>
 					}
 				</mat-card-actions>
 			</mat-card>
