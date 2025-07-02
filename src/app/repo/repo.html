@@ -18,23 +18,25 @@
 				</mat-card-title>
 			</mat-card-header>
 			<mat-card-content>
+				@if (repo()?.description) {
 				<p class="mb-4 text-gray-700 dark:text-gray-200">
-					{{ repo()?.description || "Sem descrição." }}
+					{{ repo()?.description }}
 				</p>
+				}
 				<div
-					class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-300 mb-4"
+					class="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-300 mb-4"
 				>
 					@if (repo()?.language) {
-					<span><mat-icon>code</mat-icon> {{ repo()?.language }}</span>
+					<span class="flex items-center gap-1">
+						<mat-icon>code</mat-icon> {{ repo()?.language }}
+					</span>
 					}
-					<span
-						><mat-icon>star</mat-icon>
-						{{ repo()?.stargazers_count }} Stars</span
-					>
-					<span
-						><mat-icon>call_split</mat-icon>
-						{{ repo()?.forks_count }} Forks</span
-					>
+					<span class="flex items-center gap-1">
+						<mat-icon>star</mat-icon> {{ repo()?.stargazers_count }} Stars
+					</span>
+					<span class="flex items-center gap-1">
+						<mat-icon>call_split</mat-icon> {{ repo()?.forks_count }} Forks
+					</span>
 				</div>
 				<!-- Histórico de commits -->
 				<div>
