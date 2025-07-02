@@ -45,42 +45,44 @@
 				</div>
 
 				<!-- Botões de ação -->
-				<mat-card-actions align="end" class="px-4 pb-4 mt-3 gap-3">
-					<a
-						matFab
-						extended
-						class="customBtn"
-						[routerLink]="['/repo', project.repoLink.split('/').pop()]"
-					>
-						<span class="flex items-center gap-2">
-							<mat-icon>info</mat-icon>
-							Detalhes
-						</span>
-					</a>
-					<a
-						matFab
-						extended
-						class="customBtn"
-						[href]="project.repoLink"
-						target="_blank"
-					>
-						<span class="flex items-center gap-2">
-							<app-icon name="github" />
-							Github
-						</span>
-					</a>
-					@if (project.deployLink) {
-					<a
-						class="customBtn"
-						matFab
-						extended
-						[href]="project.deployLink"
-						target="_blank"
-					>
-						<mat-icon>link</mat-icon>
-						Page
-					</a>
-					}
+					<mat-card-actions align="end">
+					<div class="flex flex-col sm:flex-row gap-3 w-full">
+						<a
+							matFab
+							extended
+							class="customBtn"
+							[routerLink]="['/repo', project.repoLink.split('/').pop()]"
+						>
+							<span class="flex items-center gap-2">
+								<mat-icon>info</mat-icon>
+								Detalhes
+							</span>
+						</a>
+						<a
+							matFab
+							extended
+							class="customBtn"
+							[href]="project.repoLink"
+							target="_blank"
+						>
+							<span class="flex items-center gap-2">
+								<app-icon name="github" />
+								Github
+							</span>
+						</a>
+						@if (project.deployLink) {
+						<a
+							class="customBtn"
+							matFab
+							extended
+							[href]="project.deployLink"
+							target="_blank"
+						>
+							<mat-icon>link</mat-icon>
+							Page
+						</a>
+						}
+					</div>
 				</mat-card-actions>
 			</mat-card>
 
