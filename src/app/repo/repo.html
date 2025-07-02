@@ -1,41 +1,61 @@
-<div class="flex flex-col items-center min-h-[60vh] py-8">
+<div
+	class="flex flex-col items-center min-h-[60vh] py-8 bg-gradient-to-br from-violet-900/30 to-indigo-900/10"
+>
 	@if (repo()) {
 	<div class="max-w-xl w-full flex flex-col gap-8">
-		<mat-card>
+		<mat-card
+			class="transition-shadow shadow-lg hover:shadow-2xl duration-200 rounded-2xl bg-white/90 dark:bg-gray-900/80"
+		>
 			<img
 				[src]="projectImg"
 				[alt]="repo()?.name + ' imagem'"
-				class="w-full h-60 object-cover rounded-t-2xl"
+				class="w-full h-60 object-cover rounded-t-2xl transition-transform duration-200 hover:scale-105"
 			/>
 			<mat-card-header>
 				<mat-card-title>
-					<span
-						class="text-2xl font-bold text-blue-600 flex items-center gap-2"
+					<a
+						[href]="repo()?.html_url"
+						target="_blank"
+						rel="noopener"
+						class="text-2xl font-bold text-blue-700 dark:text-blue-400 flex items-center gap-2 hover:underline hover:text-indigo-500 transition-colors"
 					>
-						<mat-icon>folder</mat-icon>
+						<mat-icon class="text-indigo-500">folder</mat-icon>
 						{{ repo()?.name }}
-					</span>
+						<mat-icon
+							class="text-blue-400 group-hover:text-indigo-500 transition-colors"
+							>open_in_new</mat-icon
+						>
+					</a>
 				</mat-card-title>
 			</mat-card-header>
 			<mat-card-content>
 				@if (repo()?.description) {
-				<p class="mb-4 text-gray-700 dark:text-gray-200">
+				<p class="mb-4 text-gray-700 dark:text-gray-200 italic">
 					{{ repo()?.description }}
 				</p>
 				}
 				<div
-					class="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-300 mb-4"
+					class="flex flex-wrap justify-center gap-6 text-base text-gray-700 dark:text-gray-200 mb-4 font-medium"
 				>
 					@if (repo()?.language) {
-					<span class="flex items-center gap-1">
-						<mat-icon>code</mat-icon> {{ repo()?.language }}
+					<span
+						class="flex items-center gap-1 hover:text-blue-600 transition-colors"
+					>
+						<mat-icon class="text-blue-400">code</mat-icon>
+						{{ repo()?.language }}
 					</span>
 					}
-					<span class="flex items-center gap-1">
-						<mat-icon>star</mat-icon> {{ repo()?.stargazers_count }} Stars
+					<span
+						class="flex items-center gap-1 hover:text-yellow-600 transition-colors"
+					>
+						<mat-icon class="text-yellow-500">star</mat-icon>
+						{{ repo()?.stargazers_count }} Stars
 					</span>
-					<span class="flex items-center gap-1">
-						<mat-icon>call_split</mat-icon> {{ repo()?.forks_count }} Forks
+					<span
+						class="flex items-center gap-1 hover:text-pink-600 transition-colors"
+					>
+						<mat-icon class="text-pink-400">call_split</mat-icon>
+						{{ repo()?.forks_count }} Forks
 					</span>
 				</div>
 				<!-- Histórico de commits -->
@@ -43,18 +63,38 @@
 					<div
 						class="text-lg font-bold text-blue-600 flex items-center gap-2 mb-2"
 					>
-						<mat-icon>history</mat-icon>
+						<mat-icon class="text-blue-400">history</mat-icon>
 						Últimos Commits
 					</div>
 					@if (commits() && commits().length > 0) {
 					<ul>
 						@for (commit of commits().slice(0, 10); track commit.sha) {
-						<li class="mb-4 border-b border-gray-200 pb-2 flex flex-col gap-1">
+						<li
+							class="mb-4 border-b border-gray-200 pb-2 flex flex-col gap-1 group"
+						>
 							<span
 								[ngClass]="getCommitClass(commit.commit?.message)"
-								class="flex items-center gap-2"
+								class="flex items-center gap-2 transition-colors"
 							>
-								<mat-icon>{{ getCommitIcon(commit.commit?.message) }}</mat-icon>
+								<mat-icon
+									class="transition-colors"
+									[ngClass]="{
+										'text-green-600':
+											getCommitIcon(commit.commit?.message) === 'new_releases',
+										'text-yellow-600':
+											getCommitIcon(commit.commit?.message) === 'build',
+										'text-blue-600':
+											getCommitIcon(commit.commit?.message) === 'science',
+										'text-purple-600':
+											getCommitIcon(commit.commit?.message) === 'sync_alt',
+										'text-orange-600':
+											getCommitIcon(commit.commit?.message) === 'description',
+										'text-gray-500':
+											getCommitIcon(commit.commit?.message) === 'commit'
+									}"
+								>
+									{{ getCommitIcon(commit.commit?.message) }}
+								</mat-icon>
 								{{ commit.commit?.message }}
 							</span>
 							<div class="text-xs text-gray-500">
@@ -62,11 +102,13 @@
 								{{ commit.commit?.author?.date | date : "short" }}
 							</div>
 							<a
-								class="text-blue-500 text-xs"
+								class="text-blue-500 text-xs underline hover:text-indigo-600 transition-colors"
 								[href]="commit.html_url"
 								target="_blank"
-								>Ver no GitHub</a
+								rel="noopener"
 							>
+								Ver no GitHub
+							</a>
 						</li>
 						}
 					</ul>
@@ -81,6 +123,7 @@
 					color="primary"
 					[href]="repo()?.html_url"
 					target="_blank"
+					class="transition-transform hover:scale-105"
 				>
 					<mat-icon>open_in_new</mat-icon>
 					Ver no GitHub
