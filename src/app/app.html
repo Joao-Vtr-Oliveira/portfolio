@@ -7,23 +7,42 @@
 		[autoFocus]="false"
 	>
 		<nav class="flex flex-col gap-4 p-6 text-blue-900 font-semibold">
-			<a (click)="drawer.close(); scrollTo('home')" class="cursor-pointer"
+			<a
+				(click)="
+					drawer.close();
+					isHome()
+						? scrollTo('home')
+						: router.navigate(['/'], { fragment: 'home' })
+				"
+				class="cursor-pointer"
 				>Início</a
 			>
 			<a
-				(click)="drawer.close(); scrollTo('experiencia')"
+				(click)="
+					drawer.close(); router.navigate(['/'], { fragment: 'experiencia' })
+				"
 				class="cursor-pointer"
 				>Experiência</a
 			>
-			<a (click)="drawer.close(); scrollTo('projetos')" class="cursor-pointer"
+			<a
+				(click)="
+					drawer.close(); router.navigate(['/'], { fragment: 'projetos' })
+				"
+				class="cursor-pointer"
 				>Projetos</a
 			>
 			<a
-				(click)="drawer.close(); scrollTo('tecnologias')"
+				(click)="
+					drawer.close(); router.navigate(['/'], { fragment: 'tecnologias' })
+				"
 				class="cursor-pointer"
 				>Tecnologias</a
 			>
-			<a (click)="drawer.close(); scrollTo('contato')" class="cursor-pointer"
+			<a
+				(click)="
+					drawer.close(); router.navigate(['/'], { fragment: 'contato' })
+				"
+				class="cursor-pointer"
 				>Contato</a
 			>
 			<!-- Redes sociais só em telas pequenas -->

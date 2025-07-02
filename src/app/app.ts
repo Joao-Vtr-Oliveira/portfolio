@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, inject, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatSidenavModule, MatSidenav } from '@angular/material/sidenav';
 import { Header } from './header/header';
@@ -16,6 +16,9 @@ import { filter } from 'rxjs/operators';
 })
 export class App implements OnInit {
 	@ViewChild('drawer') drawer!: MatSidenav;
+	router = inject(Router);
+	meta = inject(Meta);
+	title = inject(Title);
 
 	goTo(route: string) {
 		window.location.href = route;
@@ -34,11 +37,9 @@ export class App implements OnInit {
 		}
 	}
 
-	constructor(
-		private meta: Meta,
-		private title: Title,
-		private router: Router // <-- Adicione o Router aqui
-	) {}
+	public isHome(): boolean {
+		return window.location.pathname === '/';
+	}
 
 	ngOnInit(): void {
 		this.title.setTitle('Portfólio João Vitor');
