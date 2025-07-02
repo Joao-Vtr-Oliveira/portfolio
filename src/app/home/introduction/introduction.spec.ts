@@ -20,4 +20,10 @@ describe('Introduction', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should have name in H2', () => {
+    const h2: HTMLHeadingElement = fixture.nativeElement.querySelector(
+      '[data-testid="heading2-introductionComponent"]'
+    );
+    expect(h2.textContent).toContain('João Vitor');
+  })
 });
