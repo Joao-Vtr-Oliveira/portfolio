@@ -1,21 +1,42 @@
-# Portfolio
+# Portfólio - João Vitor De Oliveira
 
 <div align="center">
-  <p><strong>Tecnologias utilizadas:</strong></p>
-  <a href="https://github.com/Joao-Vtr-Oliveira/portfolio">
-    <img src="https://skillicons.dev/icons?i=ts,angular,tailwind,jest" />
-  </a>
+  <img src="https://skillicons.dev/icons?i=angular,ts,tailwind,jest" />
 </div>
 
 ---
 
-## 📌 Descrição
+## Sobre
 
-Portfolio em andamento...
+Esse projeto foi criado com o objetivo de apresentar meus conhecimentos em **desenvolvimento fullstack**.
 
-
-## 📄 Páginas
-
-
+O portfólio foi cuidadosamente desenvolvido com uma identidade visual marcante e uma estrutura responsiva, destacando meus principais projetos, tecnologias dominadas, experiência profissional e formas de contato.
 
 ---
+
+## Tecnologias utilizadas
+
+- **Angular 20**
+- **TailwindCSS**
+- **Angular Material**
+- **TypeScript**
+- **Jest**
+- **Standalone Components & Signals**
+- **Animações e boas práticas de UI/UX**
+
+---
+
+## Testes
+
+Todos os componentes foram testados utilizando **Jest**, assegurando a qualidade da aplicação e sua estabilidade.
+
+---
+
+## Deploy
+
+O projeto está disponível online em:
+
+👉 [portfolio-joao-v.vercel.app](https://portfolio-joao-v.vercel.app)
+
+---
+
