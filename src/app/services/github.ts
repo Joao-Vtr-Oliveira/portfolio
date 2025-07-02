@@ -1,0 +1,47 @@
+import { inject, Injectable, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { catchError, tap, throwError } from 'rxjs';
+import { RepoInterface } from './repo.model';
+
+
+@Injectable({
+	providedIn: 'root',
+})
+export class Github {
+	private httpClient = inject(HttpClient);
+	private repo = signal<RepoInterface | undefined>(undefined);
+	private loading = signal(false);
+	private error = signal<string | null>(null);
+
+	readRepo = this.repo.asReadonly();
+	readLoading = this.loading.asReadonly();
+	readError = this.error.asReadonly();
+
+
+	fetchRepo(repoName: string) {
+		return this.httpClient
+			.get<RepoInterface>(
+				'https://api.github.com/repos/' + 'joao-vtr-oliveira/' + repoName,
+				{}
+			)
+			.pipe(
+				tap((repoData) => {
+					this.repo.set(repoData);
+					this.loading.set(false);
+				}),
+				catchError((error) => {
+					const message = this.handleHttpError(error);
+					this.error.set(message);
+					this.loading.set(false);
+					this.repo.set(undefined);
+					return throwError(() => new Error(message));
+				})
+			);
+	}
+
+	private handleHttpError(error: any): string {
+		if (error.status === 404) return 'Repo not found';
+		if (error.status === 403) return 'Max request limit';
+		return 'Unkown error. Please, try later.';
+	}
+}
