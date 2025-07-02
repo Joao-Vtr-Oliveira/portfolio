@@ -1,9 +1,56 @@
-<div class="w-full">
-  <div class="fixed top-0 left-0 w-full z-50">
-    <app-header></app-header>
-  </div>
+<mat-sidenav-container class="h-screen">
+	<mat-sidenav
+		#drawer
+		mode="over"
+		position="end"
+		class="max-w-full sm:w-64 w-4/5"
+		[autoFocus]="false"
+	>
+		<nav class="flex flex-col gap-4 p-6 text-blue-900 font-semibold">
+			<a (click)="drawer.close(); scrollTo('home')" class="cursor-pointer"
+				>Início</a
+			>
+			<a
+				(click)="drawer.close(); scrollTo('experiencia')"
+				class="cursor-pointer"
+				>Experiência</a
+			>
+			<a (click)="drawer.close(); scrollTo('projetos')" class="cursor-pointer"
+				>Projetos</a
+			>
+			<a
+				(click)="drawer.close(); scrollTo('tecnologias')"
+				class="cursor-pointer"
+				>Tecnologias</a
+			>
+			<a (click)="drawer.close(); scrollTo('contato')" class="cursor-pointer"
+				>Contato</a
+			>
+			<!-- Redes sociais só em telas pequenas -->
+			<div class="flex gap-2 mt-6 sm:hidden">
+				<a href="https://github.com/Joao-Vtr-Oliveira" target="_blank">
+					<button class="hover:!text-gray-400 duration-150" matIconButton>
+						<app-icon name="github" class="h-8" />
+					</button>
+				</a>
+				<a
+					href="https://www.linkedin.com/in/jo%C3%A3o-vitor-oliveira-b8b190252/"
+					target="_blank"
+				>
+					<button matIconButton class="group hover:!text-blue-500 duration-150">
+						<app-icon name="linkedin" class="h-8 text-inherit" />
+					</button>
+				</a>
+			</div>
+		</nav>
+	</mat-sidenav>
 
-  <div class="">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+	<app-header
+		[drawer]="drawer"
+		class="fixed top-0 left-0 w-full z-50"
+	></app-header>
+
+	<div class="pt-[64px] sm:pt-[72px] h-full">
+		<router-outlet></router-outlet>
+	</div>
+</mat-sidenav-container>

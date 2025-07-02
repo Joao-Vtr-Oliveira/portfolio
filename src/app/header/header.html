@@ -9,7 +9,10 @@
 	</div>
 
 	<nav class="hidden lg:flex gap-6 text-white text-sm">
-		<a (click)="scrollTo('home')" data-testid="anchorHome-headerComponent" class="hover:text-[#c3b3d8] transition-colors cursor-pointer"
+		<a
+			(click)="scrollTo('home')"
+			data-testid="anchorHome-headerComponent"
+			class="hover:text-[#c3b3d8] transition-colors cursor-pointer"
 			>Início</a
 		>
 		<a
@@ -51,7 +54,7 @@
 	</div>
 
 	<div class="block lg:hidden">
-		<button matIconButton class="example-icon" aria-label="Menu">
+		<button mat-icon-button (click)="drawer.open()" aria-label="Menu">
 			<mat-icon>menu</mat-icon>
 		</button>
 	</div>

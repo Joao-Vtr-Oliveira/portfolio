@@ -1,0 +1,7 @@
+body {
+	background: #673ab7 !important;
+}
+
+.mat-sidenav-container {
+  background: radial-gradient(circle at top left, #181023, #0b0519) !important;
+}

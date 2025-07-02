@@ -1,12 +1,12 @@
 .example-spacer {
-  flex: 1 1 auto;
+	flex: 1 1 auto;
 }
 
 .minha-toolbar {
-  display: flex;
-  justify-content: space-around;
-  background-color: #673ab7; /* roxo escuro */
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
+	display: flex;
+	justify-content: space-around;
+	background-color: #673ab7; /* roxo escuro */
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
 }
