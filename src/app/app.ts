@@ -4,6 +4,8 @@ import { MatSidenavModule, MatSidenav } from '@angular/material/sidenav';
 import { Header } from './header/header';
 import { Icon } from './shared/icon/icon';
 import { Meta, Title } from '@angular/platform-browser';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-root',
@@ -32,7 +34,11 @@ export class App implements OnInit {
 		}
 	}
 
-	constructor(private meta: Meta, private title: Title) {}
+	constructor(
+		private meta: Meta,
+		private title: Title,
+		private router: Router // <-- Adicione o Router aqui
+	) {}
 
 	ngOnInit(): void {
 		this.title.setTitle('Portfólio João Vitor');
@@ -64,5 +70,17 @@ export class App implements OnInit {
 			name: 'twitter:card',
 			content: 'summary_large_image',
 		});
+
+		this.router.events
+			.pipe(filter((event) => event instanceof NavigationEnd))
+			.subscribe(() => {
+				if (window.location.hash) {
+					const id = window.location.hash.replace('#', '');
+					setTimeout(() => {
+						const el = document.getElementById(id);
+						if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}, 200); // 200ms para garantir que o DOM já foi renderizado
+				}
+			});
 	}
 }
