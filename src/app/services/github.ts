@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, tap, throwError } from 'rxjs';
 import { RepoInterface } from './repo.model';
 
-
 @Injectable({
 	providedIn: 'root',
 })
@@ -12,11 +11,12 @@ export class Github {
 	private repo = signal<RepoInterface | undefined>(undefined);
 	private loading = signal(false);
 	private error = signal<string | null>(null);
+	private commits = signal<any[]>([]);
 
 	readRepo = this.repo.asReadonly();
 	readLoading = this.loading.asReadonly();
 	readError = this.error.asReadonly();
-
+	readCommits = this.commits.asReadonly();
 
 	fetchRepo(repoName: string) {
 		return this.httpClient
@@ -35,6 +35,25 @@ export class Github {
 					this.loading.set(false);
 					this.repo.set(undefined);
 					return throwError(() => new Error(message));
+				})
+			);
+	}
+
+	fetchCommits(repoName: string) {
+		this.loading.set(true);
+		return this.httpClient
+			.get<any[]>(
+				`https://api.github.com/repos/joao-vtr-oliveira/${repoName}/commits`
+			)
+			.pipe(
+				tap((commitsData) => {
+					this.commits.set(commitsData);
+					this.loading.set(false);
+				}),
+				catchError((error) => {
+					this.commits.set([]);
+					this.loading.set(false);
+					return throwError(() => new Error('Erro ao buscar commits'));
 				})
 			);
 	}
