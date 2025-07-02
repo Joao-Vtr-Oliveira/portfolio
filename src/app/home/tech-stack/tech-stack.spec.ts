@@ -1,23 +1,26 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TechStackComponent } from './tech-stack';
 
-import { TechStack } from './tech-stack';
+describe('TechStackComponent', () => {
+	let component: TechStackComponent;
+	let fixture: ComponentFixture<TechStackComponent>;
 
-describe('TechStack', () => {
-  let component: TechStack;
-  let fixture: ComponentFixture<TechStack>;
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
+			imports: [TechStackComponent],
+		}).compileComponents();
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [TechStack]
-    })
-    .compileComponents();
+		fixture = TestBed.createComponent(TechStackComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-    fixture = TestBed.createComponent(TechStack);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should render section title', () => {
+		const title = fixture.nativeElement.querySelector('h2');
+		expect(title.textContent).toContain('Tech Stack');
+	});
 });
