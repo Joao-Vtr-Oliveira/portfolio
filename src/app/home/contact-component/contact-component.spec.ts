@@ -20,4 +20,10 @@ describe('ContactComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('shoulf have phone number', () => {
+    const anchor: HTMLAnchorElement = fixture.nativeElement.querySelector(
+      '[data-testid="anchorPhone-contactComponent"]'
+    );
+    expect(anchor.href).toContain('84169215');
+  })
 });
