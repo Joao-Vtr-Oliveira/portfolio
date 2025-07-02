@@ -20,4 +20,11 @@ describe('AboutMe', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('shoud have "sobre mim"', () => {
+    const h1: HTMLHeadingElement = fixture.nativeElement.querySelector(
+      '[data-testid="heading1-abouteMe"]'
+    );
+
+    expect(h1.textContent).toContain('Sobre mim')
+  })
 });
