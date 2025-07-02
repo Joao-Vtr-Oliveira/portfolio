@@ -25,9 +25,9 @@ describe('Experiences', () => {
 		expect(title.textContent).toContain('Experiência Profissional');
 	});
 
-	it('should render at least one experience card', () => {
+	it('should render the same number of experience array length', () => {
 		const cards = fixture.nativeElement.querySelectorAll('mat-card');
-		expect(cards.length).toBeGreaterThan(0);
+		expect(cards.length).toBe(component.experiences().length);
 	});
 
 	it('should render experience name and bio', () => {
