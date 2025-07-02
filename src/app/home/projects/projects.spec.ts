@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Projects } from './projects';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('Projects', () => {
 	let component: Projects;
@@ -9,7 +10,7 @@ describe('Projects', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [Projects, HttpClientTestingModule],
+			imports: [Projects, HttpClientTestingModule, RouterTestingModule],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(Projects);
@@ -40,8 +41,6 @@ describe('Projects', () => {
 			const item = component
 				.projects()
 				.find((item) => item.name === name!.textContent);
-			console.log('mat-card-title: ', name?.textContent);
-			console.log('itemArray: ', item?.name);
 			expect(name!.textContent).toContain(item!.name);
 		});
 	});
