@@ -2,6 +2,11 @@
 	@if (repo()) {
 	<div class="max-w-xl w-full flex flex-col gap-8">
 		<mat-card>
+			<img
+				[src]="projectImg"
+				[alt]="repo()?.name + ' imagem'"
+				class="w-full h-60 object-cover rounded-t-2xl"
+			/>
 			<mat-card-header>
 				<mat-card-title>
 					<span
@@ -17,7 +22,7 @@
 					{{ repo()?.description || "Sem descrição." }}
 				</p>
 				<div
-					class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-300"
+					class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-300 mb-4"
 				>
 					@if (repo()?.language) {
 					<span><mat-icon>code</mat-icon> {{ repo()?.language }}</span>
@@ -31,6 +36,39 @@
 						{{ repo()?.forks_count }} Forks</span
 					>
 				</div>
+				<!-- Histórico de commits -->
+				<div>
+					<div
+						class="text-lg font-bold text-blue-600 flex items-center gap-2 mb-2"
+					>
+						<mat-icon>history</mat-icon>
+						Últimos Commits
+					</div>
+					@if (commits() && commits().length > 0) {
+					<ul>
+						@for (commit of commits().slice(0, 10); track commit.sha) {
+						<li class="mb-4 border-b border-gray-200 pb-2 flex flex-col gap-1">
+							<!-- Estilo por prefixo -->
+							<span [ngClass]="getCommitClass(commit.commit?.message)">
+								{{ commit.commit?.message }}
+							</span>
+							<div class="text-xs text-gray-500">
+								{{ commit.commit?.author?.name }} -
+								{{ commit.commit?.author?.date | date : "short" }}
+							</div>
+							<a
+								class="text-blue-500 text-xs"
+								[href]="commit.html_url"
+								target="_blank"
+								>Ver no GitHub</a
+							>
+						</li>
+						}
+					</ul>
+					} @else {
+					<div class="text-gray-400">Nenhum commit encontrado.</div>
+					}
+				</div>
 			</mat-card-content>
 			<mat-card-actions align="end" class="mt-4">
 				<a
@@ -43,40 +81,6 @@
 					Ver no GitHub
 				</a>
 			</mat-card-actions>
-		</mat-card>
-
-		<mat-card>
-			<mat-card-header>
-				<mat-card-title>
-					<span class="text-lg font-bold text-blue-600 flex items-center gap-2">
-						<mat-icon>history</mat-icon>
-						Últimos Commits
-					</span>
-				</mat-card-title>
-			</mat-card-header>
-			<mat-card-content>
-				@if (commits() && commits().length > 0) {
-				<ul>
-					@for (commit of commits(); track commit.sha) {
-					<li class="mb-4 border-b border-gray-200 pb-2">
-						<div class="font-semibold">{{ commit.commit?.message }}</div>
-						<div class="text-xs text-gray-500">
-							{{ commit.commit?.author?.name }} -
-							{{ commit.commit?.author?.date | date : "short" }}
-						</div>
-						<a
-							class="text-blue-500 text-xs"
-							[href]="commit.html_url"
-							target="_blank"
-							>Ver no GitHub</a
-						>
-					</li>
-					}
-				</ul>
-				} @else {
-				<div class="text-gray-400">Nenhum commit encontrado.</div>
-				}
-			</mat-card-content>
 		</mat-card>
 	</div>
 	} @else {
