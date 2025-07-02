@@ -10,7 +10,7 @@ describe('Header', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [Header],
-      providers: [provideHttpClient()]
+			providers: [provideHttpClient()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(Header);
@@ -25,6 +25,16 @@ describe('Header', () => {
 		const span: HTMLSpanElement = fixture.nativeElement.querySelector(
 			'[data-testid="spanName-headerComponent"]'
 		);
-    expect(span.textContent).toContain('João Vitor de Oliveira');
+		expect(span.textContent).toContain('João Vitor De Oliveira');
+	});
+
+	it('should call scrollTo function', () => {
+		const scrollSpy = jest.spyOn(component, 'scrollTo');
+		const anchor: HTMLAnchorElement = fixture.nativeElement.querySelector(
+			'[data-testid="anchorHome-headerComponent"]'
+		);
+		anchor.click();
+		fixture.detectChanges();
+		expect(scrollSpy).toHaveBeenCalledWith('home');
 	});
 });
