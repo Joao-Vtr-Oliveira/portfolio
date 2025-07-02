@@ -30,9 +30,9 @@ export class Repo implements OnInit {
 		if (repoName) {
 			this.github.fetchRepo(repoName).subscribe();
 			this.github.fetchCommits(repoName).subscribe();
-			// Busca a imagem do projeto pelo nome
-			const project = projects.find(
-				(p) => p.name.toLowerCase() === repoName.toLowerCase()
+			// Busca o projeto pelo nome do repositório no repoLink e pega o imgSrc direto
+			const project = projects.find((p) =>
+				p.repoLink.toLowerCase().endsWith('/' + repoName.toLowerCase())
 			);
 			this.projectImg = project?.imgSrc;
 		}
@@ -51,5 +51,15 @@ export class Repo implements OnInit {
 		if (message.startsWith('docs'))
 			return 'bg-orange-100 text-orange-800 px-2 py-1 rounded';
 		return 'bg-gray-100 text-gray-800 px-2 py-1 rounded';
+	}
+
+	getCommitIcon(message?: string): string {
+		if (!message) return 'commit';
+		if (message.startsWith('feat')) return 'new_releases';
+		if (message.startsWith('fix')) return 'build';
+		if (message.startsWith('test')) return 'science';
+		if (message.startsWith('refactor')) return 'sync_alt';
+		if (message.startsWith('docs')) return 'description';
+		return 'commit';
 	}
 }

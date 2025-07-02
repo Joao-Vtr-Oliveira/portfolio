@@ -48,8 +48,11 @@
 					<ul>
 						@for (commit of commits().slice(0, 10); track commit.sha) {
 						<li class="mb-4 border-b border-gray-200 pb-2 flex flex-col gap-1">
-							<!-- Estilo por prefixo -->
-							<span [ngClass]="getCommitClass(commit.commit?.message)">
+							<span
+								[ngClass]="getCommitClass(commit.commit?.message)"
+								class="flex items-center gap-2"
+							>
+								<mat-icon>{{ getCommitIcon(commit.commit?.message) }}</mat-icon>
 								{{ commit.commit?.message }}
 							</span>
 							<div class="text-xs text-gray-500">
