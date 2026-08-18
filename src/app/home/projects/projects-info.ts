@@ -4,7 +4,7 @@ interface Project {
 	bio: string;
 	tech: string;
 	imgSrc: string;
-	repoLink: string;
+	repoLink?: string;
 	deployLink: string;
 }
 
@@ -21,6 +21,20 @@ export const projects: Project[] = [
 		imgSrc: '/images/projects/brasil-API.png',
 		repoLink: 'https://github.com/Joao-Vtr-Oliveira/Brasil-API-Angular',
 		tech: 'https://skillicons.dev/icons?i=ts,angular,tailwind,jest',
+	},
+	{
+		id: 6,
+		name: 'D&D Dungeon Master Helper',
+		bio: `Ferramenta para mestres de D&D com foco em uso local durante as sessões.
+
+- Encontros salvos e editáveis, Encounter Hub e Battle Tracker.
+- Fichas homebrew e calendário com world clock.
+- Backup completo em JSON e sincronização dos dados do projeto.
+- Persistência local com localStorage para manter o fluxo da mesa organizado.`,
+		deployLink: 'https://dnd-dm-helper.vercel.app',
+		imgSrc: '/images/projects/dnd-dm-helper.png',
+		repoLink: 'https://github.com/Joao-Vtr-Oliveira/dnd-dm-helper',
+		tech: 'https://skillicons.dev/icons?i=angular,ts,tailwind',
 	},
 	{
 		id: 2,

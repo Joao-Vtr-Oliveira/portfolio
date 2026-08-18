@@ -4,58 +4,54 @@
 			Experiência Profissional
 		</h2>
 
-		<div class="">
+		<div class="flex flex-col justify-center gap-8">
 			@for (experience of experiences(); track experience.id) {
 
 			<mat-card
 				appearance="outlined"
-				class="w-full max-w-sm min-h-[600px] flex flex-col justify-between rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:scale-[1.01] bg-white dark:bg-gray-800"
+				class="w-full max-w-5xl flex flex-col justify-between rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:scale-[1.01] bg-white dark:bg-gray-800"
 			>
-				<img
-					mat-card-image
-					[src]="experience.imgSrc"
-					[alt]="experience.name + ' imagem'"
-					class="h-80 object-cover w-full"
-				/>
-
 				<mat-card-header>
 					<mat-card-title class="text-lg font-semibold">{{
-						experience.name
+						experience.role
 					}}</mat-card-title>
+					<mat-card-subtitle
+						>{{ experience.company }} · {{ experience.period }}</mat-card-subtitle
+					>
 				</mat-card-header>
 
 				<mat-card-content class="px-4 pb-4">
-					<pre
-						class="whitespace-pre-wrap break-words text-sm text-gray-700 dark:text-gray-300"
-						>{{ experience.bio }}
-					</pre
+					<p
+						class="whitespace-pre-line break-words text-sm text-gray-700 dark:text-gray-300"
 					>
+						{{ experience.bio }}
+					</p>
 				</mat-card-content>
 
-				<div class="px-4 mt-2">
+				<div class="px-4 mt-2 mb-2">
 					<img
 						[src]="experience.tech"
-						[alt]="experience.name + ' stack'"
-						class="w-full h-8 object-contain"
+						[alt]="experience.role + ' stack'"
+						class="max-w-full h-8 object-contain"
 						loading="lazy"
 					/>
 				</div>
 
-				<!-- Botões de ação -->
+				@if (experience.deployLink) {
 				<mat-card-actions align="end" class="px-4 pb-4">
-					@if (experience.deployLink) {
 					<a
 						class="customBtn"
 						matFab
 						extended
 						[href]="experience.deployLink"
 						target="_blank"
+						rel="noopener noreferrer"
 					>
 						<mat-icon>link</mat-icon>
 						Page
 					</a>
-					}
 				</mat-card-actions>
+				}
 			</mat-card>
 
 			}

@@ -32,7 +32,7 @@ export class Repo implements OnInit {
 			this.github.fetchCommits(repoName).subscribe();
 			// Busca o projeto pelo nome do repositório no repoLink e pega o imgSrc direto
 			const project = projects.find((p) =>
-				p.repoLink.toLowerCase().endsWith('/' + repoName.toLowerCase())
+				p.repoLink?.toLowerCase().endsWith('/' + repoName.toLowerCase())
 			);
 			this.projectImg = project?.imgSrc;
 		}

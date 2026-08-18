@@ -30,24 +30,33 @@ describe('Experiences', () => {
 		expect(cards.length).toBe(component.experiences().length);
 	});
 
-	it('should render experience name and bio', () => {
+	it('should render the current professional experience', () => {
 		const cardTitle = fixture.nativeElement.querySelector('mat-card-title');
 		const cardContent = fixture.nativeElement.querySelector(
-			'mat-card-content pre'
+			'mat-card-content p'
 		);
-		expect(cardTitle.textContent).toContain('Meu Bichin');
+		expect(cardTitle.textContent).toContain('Desenvolvedor Fullstack');
 		expect(cardContent.textContent).toContain(
-			'Fiquei responsável pela criação da página web'
+			'Atuei no desenvolvimento e manutenção de aplicações web'
 		);
 	});
 
-	it('should have a link to the deploy if deployLink exists', () => {
+	it('should render the company and period', () => {
+		const subtitle = fixture.nativeElement.querySelector('mat-card-subtitle');
+		expect(subtitle.textContent).toContain('SHV Digital');
+		expect(subtitle.textContent).toContain('Jul. 2025 - Ago. 2026');
+	});
+
+	it('should render MeuBichin as a professional experience', () => {
+		const titles = Array.from(
+			fixture.nativeElement.querySelectorAll('mat-card-title')
+		).map((title: Element) => title.textContent);
 		const link = fixture.nativeElement.querySelector('a.customBtn');
-		expect(link).toBeTruthy();
+
+		expect(titles).toContain('Desenvolvedor Web Freelancer');
 		expect(link.getAttribute('href')).toBe(
 			'https://meu-bichin-site.vercel.app/'
 		);
-		expect(link.textContent).toContain('Page');
 	});
 
 	it('should render the tech stack image', () => {

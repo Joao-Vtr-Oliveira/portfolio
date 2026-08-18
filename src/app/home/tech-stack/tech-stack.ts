@@ -22,6 +22,8 @@ export class TechStackComponent {
 	backendIcons = [
 		{ name: 'Node.js', icon: 'nodejs' },
 		{ name: 'Express', icon: 'express' },
+		{ name: 'C#', icon: 'cs' },
+		{ name: '.NET', icon: 'dotnet' },
 		{ name: 'MongoDB', icon: 'mongodb' },
 		{ name: 'MySQL', icon: 'mysql' },
 		{ name: 'PostgreSQL', icon: 'postgres' },
@@ -35,5 +37,7 @@ export class TechStackComponent {
 		{ name: 'Postman', icon: 'postman' },
 		{ name: 'Docker', icon: 'docker' },
 		{ name: 'Jest', icon: 'jest' },
+		{ name: 'Azure', icon: 'azure' },
+		{ name: 'Linux', icon: 'linux' },
 	];
 }
