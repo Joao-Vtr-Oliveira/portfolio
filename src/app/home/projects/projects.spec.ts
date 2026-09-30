@@ -44,4 +44,26 @@ describe('Projects', () => {
 			expect(name!.textContent).toContain(item!.name);
 		});
 	});
+
+	it('should highlight the two D&D projects', () => {
+		const featuredCards = fixture.nativeElement.querySelectorAll(
+			'.project-card-featured'
+		);
+
+		expect(featuredCards.length).toBe(2);
+		expect(fixture.nativeElement.textContent).toContain('Projeto em destaque');
+	});
+
+	it('should not expose private repository links for the D&D projects', () => {
+		const cards: HTMLElement[] = Array.from(
+			fixture.nativeElement.querySelectorAll('mat-card'),
+		);
+
+		for (const projectName of ['D&D Dungeon Master Helper', 'D&D Player Helper']) {
+			const card = cards.find((item) => item.textContent?.includes(projectName));
+
+			expect(card).toBeTruthy();
+			expect(card?.querySelector('a[href*="github.com"]')).toBeNull();
+		}
+	});
 });

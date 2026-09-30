@@ -6,19 +6,29 @@
 		>
 			Meus Projetos
 		</h2>
+		<p class="projects-intro">
+			Uma seleção de aplicações que representam minha evolução e meus desafios técnicos mais relevantes.
+		</p>
 
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 			@for (project of projects(); track project.id) {
 
 			<mat-card
 				appearance="outlined"
-				class="w-full max-w-sm min-h-[600px] flex flex-col justify-between rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:scale-[1.01] bg-white dark:bg-gray-800"
+				class="project-card w-full min-h-[600px] flex flex-col justify-between rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:scale-[1.01] bg-white dark:bg-gray-800"
+				[class.project-card-featured]="project.featured"
 			>
+				@if (project.featured) {
+				<div class="featured-badge">
+					<mat-icon>auto_awesome</mat-icon>
+					Projeto em destaque
+				</div>
+				}
 				<img
 					mat-card-image
 					[src]="project.imgSrc"
 					[alt]="project.name + ' imagem'"
-					class="aspect-video object-cover w-full"
+					class="project-card-image aspect-video object-cover w-full"
 				/>
 
 				<mat-card-header>

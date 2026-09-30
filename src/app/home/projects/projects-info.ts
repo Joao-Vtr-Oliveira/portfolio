@@ -4,11 +4,40 @@ interface Project {
 	bio: string;
 	tech: string;
 	imgSrc: string;
+	featured?: boolean;
 	repoLink?: string;
 	deployLink: string;
 }
 
 export const projects: Project[] = [
+	{
+		id: 6,
+		name: 'D&D Dungeon Master Helper',
+		bio: `Ferramenta para mestres de D&D com foco em uso local durante as sessões.
+
+- Encontros salvos e editáveis, Encounter Hub e Battle Tracker.
+- Fichas homebrew e calendário com world clock.
+- Backup completo em JSON e sincronização dos dados do projeto.
+- Persistência local com localStorage para manter o fluxo da mesa organizado.`,
+		deployLink: 'https://dnd-dm-helper.vercel.app',
+		imgSrc: '/images/projects/dnd-dm-helper.png',
+		featured: true,
+		tech: 'https://skillicons.dev/icons?i=angular,ts,tailwind',
+	},
+	{
+		id: 7,
+		name: 'D&D Player Helper',
+		bio: `Cockpit mobile-first e offline-first para jogadores de D&D 5e 2014.
+
+- Criação, progressão e gerenciamento de múltiplas fichas.
+- Jogar, Ficha, Habilidades, Magias e Inventário em uma experiência integrada.
+- Character Engine com suporte a multiclasse, recursos, descansos e histórico.
+- PWA instalável, compêndio local e persistência offline com IndexedDB.`,
+		deployLink: 'https://dnd-player-helper.vercel.app',
+		imgSrc: '/images/projects/dnd-player-helper.png',
+		featured: true,
+		tech: 'https://skillicons.dev/icons?i=angular,ts,tailwind,pwa',
+	},
 	{
 		id: 1,
 		name: 'Brasil API',
@@ -21,20 +50,6 @@ export const projects: Project[] = [
 		imgSrc: '/images/projects/brasil-API.png',
 		repoLink: 'https://github.com/Joao-Vtr-Oliveira/Brasil-API-Angular',
 		tech: 'https://skillicons.dev/icons?i=ts,angular,tailwind,jest',
-	},
-	{
-		id: 6,
-		name: 'D&D Dungeon Master Helper',
-		bio: `Ferramenta para mestres de D&D com foco em uso local durante as sessões.
-
-- Encontros salvos e editáveis, Encounter Hub e Battle Tracker.
-- Fichas homebrew e calendário com world clock.
-- Backup completo em JSON e sincronização dos dados do projeto.
-- Persistência local com localStorage para manter o fluxo da mesa organizado.`,
-		deployLink: 'https://dnd-dm-helper.vercel.app',
-		imgSrc: '/images/projects/dnd-dm-helper.png',
-		repoLink: 'https://github.com/Joao-Vtr-Oliveira/dnd-dm-helper',
-		tech: 'https://skillicons.dev/icons?i=angular,ts,tailwind',
 	},
 	{
 		id: 2,
