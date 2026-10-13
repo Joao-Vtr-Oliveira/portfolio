@@ -1,8 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import { experiences } from './experience-info';
+import { getExperiences } from './experience-info';
 import {MatIconModule} from '@angular/material/icon';
+import { LocaleService } from '../../services/locale.service';
 
 
 @Component({
@@ -12,5 +13,6 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrl: './experience.css'
 })
 export class Experiences {
-  experiences = signal(experiences);
+	readonly i18n = inject(LocaleService);
+	readonly experiences = computed(() => getExperiences(this.i18n.locale()));
 }

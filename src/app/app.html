@@ -12,38 +12,38 @@
 					drawer.close();
 					isHome()
 						? scrollTo('home')
-						: router.navigate(['/'], { fragment: 'home' })
+						: router.navigate(['/' + locale.locale()], { fragment: 'home' })
 				"
 				class="cursor-pointer"
-				>Início</a
+				>{{ locale.t('nav.home') }}</a
 			>
 			<a
 				(click)="
-					drawer.close(); router.navigate(['/'], { fragment: 'experiencia' })
+					 drawer.close(); router.navigate(['/' + locale.locale()], { fragment: 'experiencia' })
 				"
 				class="cursor-pointer"
-				>Experiência</a
+				>{{ locale.t('nav.experience') }}</a
 			>
 			<a
 				(click)="
-					drawer.close(); router.navigate(['/'], { fragment: 'projetos' })
+					 drawer.close(); router.navigate(['/' + locale.locale()], { fragment: 'projetos' })
 				"
 				class="cursor-pointer"
-				>Projetos</a
+				>{{ locale.t('nav.projects') }}</a
 			>
 			<a
 				(click)="
-					drawer.close(); router.navigate(['/'], { fragment: 'tecnologias' })
+					 drawer.close(); router.navigate(['/' + locale.locale()], { fragment: 'tecnologias' })
 				"
 				class="cursor-pointer"
-				>Tecnologias</a
+				>{{ locale.t('nav.stack') }}</a
 			>
 			<a
 				(click)="
-					drawer.close(); router.navigate(['/'], { fragment: 'contato' })
+					 drawer.close(); router.navigate(['/' + locale.locale()], { fragment: 'contato' })
 				"
 				class="cursor-pointer"
-				>Contato</a
+				>{{ locale.t('nav.contact') }}</a
 			>
 			<!-- Redes sociais só em telas pequenas -->
 			<div class="flex gap-2 mt-6 sm:hidden">

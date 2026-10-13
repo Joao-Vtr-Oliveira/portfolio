@@ -30,4 +30,17 @@ describe('Introduction', () => {
     expect(fixture.nativeElement.textContent).toContain('Atronos Forge');
     expect(fixture.nativeElement.querySelector('a[href="#projetos"]')).toBeTruthy();
   });
+  it('scrolls to Atronos Forge without navigating away from the selected locale', () => {
+    const target = document.createElement('div');
+    target.id = 'projetos';
+    target.scrollIntoView = jest.fn();
+    document.body.appendChild(target);
+    const link = fixture.nativeElement.querySelector<HTMLAnchorElement>('a[href="#projetos"]');
+
+    link.click();
+
+    expect(target.scrollIntoView).toHaveBeenCalled();
+    expect(component.i18n.locale()).toBe('pt-BR');
+    target.remove();
+  });
 });

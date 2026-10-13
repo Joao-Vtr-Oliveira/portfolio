@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LocaleService } from '../../services/locale.service';
 
 @Component({
 	selector: 'app-tech-stack',
 	templateUrl: './tech-stack.html',
 })
 export class TechStackComponent {
+	readonly i18n = inject(LocaleService);
 	frontendIcons = [
 		{ name: 'HTML', icon: 'html' },
 		{ name: 'CSS', icon: 'css' },

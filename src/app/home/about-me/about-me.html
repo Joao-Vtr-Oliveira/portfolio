@@ -5,28 +5,19 @@
 		data-testid="heading1-abouteMe"
 		class="text-3xl sm:text-4xl font-extrabold text-blue-600 tracking-tight"
 	>
-		Sobre mim
+		{{ i18n.t('about.title') }}
 	</h1>
 
 	<p class="leading-relaxed text-lg">
-		Sou Desenvolvedor Fullstack e atuo no desenvolvimento e na manutenção de
-		aplicações web. Tenho experiência com Angular, TypeScript, Node.js,
-		C#/.NET e PostgreSQL, além de trabalhar com APIs, testes automatizados,
-		integrações e deploys.
+		{{ i18n.t('about.primary') }}
 	</p>
 
 	<p class="leading-relaxed text-base">
-		Com o Atronos Forge, aprofundei minha prática em infraestrutura e operação:
-		ambientes locais com Docker e Supabase, API em servidor Linux com Cloudflare
-		Tunnel, CI/CD com GitHub Actions e cuidados com autenticação, autorização e
-		segredos. Também uso ferramentas de IA para apoiar investigação e documentação,
-		sempre revisando decisões e validando o resultado com testes.
+		{{ i18n.t('about.infra') }}
 	</p>
 
 	<p class="leading-relaxed text-base italic">
-		Busco evoluir continuamente por meio de boas práticas, testes eficientes e
-		aprendizado de novas tecnologias. Nas horas vagas, gosto de jogar, ler artigos
-		técnicos e acompanhar conteúdos sobre o universo tecnológico.
+		{{ i18n.t('about.note') }}
 	</p>
 
 	<div class="border-t border-gray-300 pt-4 max-w-xs mx-auto sm:mx-0">

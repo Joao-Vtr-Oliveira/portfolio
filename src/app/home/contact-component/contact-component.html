@@ -4,10 +4,9 @@
 	>
 
 		<div class="flex-1 text-center lg:text-left space-y-6">
-			<h2 class="text-4xl font-bold text-blue-500">Fale comigo!</h2>
+			<h2 class="text-4xl font-bold text-blue-500">{{ i18n.t('contact.title') }}</h2>
 			<p class="text-sm sm:text-base">
-				Me mande um e-mail ou ligue se preferir. Estou sempre aberto a novos
-				projetos, feedbacks ou só pra bater um papo técnico! 
+				{{ i18n.t('contact.text') }}
 			</p>
 
 			<div
@@ -24,7 +23,7 @@
 				<a href="mailto:joao.vtr.oliveira@outlook.com">
 					<button mat-raised-button color="primary">
 						<mat-icon class="mr-1">email</mat-icon>
-						<span>Envie um e-mail</span>
+						<span>{{ i18n.t('contact.email') }}</span>
 					</button>
 				</a>
 			</div>

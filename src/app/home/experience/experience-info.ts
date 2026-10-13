@@ -1,3 +1,5 @@
+import type { PortfolioLocale } from '../../services/locale.service';
+
 interface Experience {
 	id: number;
 	role: string;
@@ -8,7 +10,8 @@ interface Experience {
 	deployLink?: string;
 }
 
-export const experiences: Experience[] = [
+const EXPERIENCES: Record<PortfolioLocale, Experience[]> = {
+	'pt-BR': [
 	{
 		id: 1,
 		role: 'Desenvolvedor Fullstack',
@@ -30,4 +33,30 @@ Fui responsável por todas as etapas, desde a escolha das ferramentas até a imp
 		tech: 'https://skillicons.dev/icons?i=react,ts,tailwind,nextjs',
 		deployLink: 'https://meu-bichin-site.vercel.app/',
 	},
-];
+],
+	en: [
+		{
+			id: 1,
+			role: 'Full-stack Developer',
+			company: 'SHV Digital',
+			period: 'Jul. 2025 - Aug. 2026',
+			bio: `Worked on the development and maintenance of web applications, primarily using Angular, C#/.NET, TypeScript, PostgreSQL, Docker, Git/GitHub, and Azure.
+
+Built APIs, automated tests, integrations, new features, bug fixes, and code maintenance, as well as deployments and log analysis.`,
+			tech: 'https://skillicons.dev/icons?i=angular,cs,dotnet,ts,postgres,docker,git,github,azure',
+		},
+		{
+			id: 2,
+			role: 'Freelance Web Developer',
+			company: 'MeuBichin Ltda',
+			period: 'Dec. 2023 - Mar. 2024',
+			bio: `Built the MeuBichin website with React, Next.js, and TypeScript, focusing on an efficient implementation.
+
+I handled every stage, from tool selection to full implementation. The interface used Tailwind CSS and Chakra UI, with Next.js routes for detailed store information.`,
+			tech: 'https://skillicons.dev/icons?i=react,ts,tailwind,nextjs',
+			deployLink: 'https://meu-bichin-site.vercel.app/',
+		},
+	],
+};
+
+export const getExperiences = (locale: PortfolioLocale): Experience[] => EXPERIENCES[locale];

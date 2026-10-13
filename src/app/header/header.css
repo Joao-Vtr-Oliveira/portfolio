@@ -10,3 +10,22 @@
 	font-weight: bold;
 	font-size: 18px;
 }
+
+.locale-button {
+	min-width: 2.35rem;
+	padding: 0.35rem 0.55rem;
+	color: rgb(255 255 255 / 0.72);
+	font-weight: 700;
+	transition: background-color 160ms ease, color 160ms ease;
+}
+
+.locale-button:hover,
+.locale-button:focus-visible {
+	background: rgb(255 255 255 / 0.14);
+	color: #fff;
+}
+
+.locale-button.locale-active {
+	background: #fff;
+	color: #542b9e;
+}

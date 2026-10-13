@@ -1,61 +1,29 @@
 <mat-toolbar class="minha-toolbar justify-between px-4">
-	<div class="flex items-center" (click)="goTo('/')">
-		<span
-			class="text-lg sm:text-xl font-semibold text-white hover:text-[#c3b3d8] cursor-pointer transition-colors duration-200"
-			data-testid="spanName-headerComponent"
-		>
-			João Vitor <span class="hidden sm:inline">De Oliveira</span>
-		</span>
+	<div class="flex items-center" (click)="goTo('/' + i18n.locale())">
+		<span class="text-lg sm:text-xl font-semibold text-white hover:text-[#c3b3d8] cursor-pointer transition-colors duration-200" data-testid="spanName-headerComponent">João Vitor <span class="hidden sm:inline">De Oliveira</span></span>
 	</div>
 
 	<nav class="hidden lg:flex gap-6 text-white text-sm">
-		<a
-			(click)="scrollTo('home')"
-			data-testid="anchorHome-headerComponent"
-			class="hover:text-[#c3b3d8] transition-colors cursor-pointer"
-			>Início</a
-		>
-		<a
-			(click)="scrollTo('experiencia')"
-			class="hover:text-[#c3b3d8] transition-colors cursor-pointer"
-			>Experiência</a
-		>
-		<a
-			(click)="scrollTo('projetos')"
-			class="hover:text-[#c3b3d8] transition-colors cursor-pointer"
-			>Projetos</a
-		>
-		<a
-			(click)="scrollTo('tecnologias')"
-			class="hover:text-[#c3b3d8] transition-colors cursor-pointer"
-			>Tecnologias</a
-		>
-		<a
-			(click)="scrollTo('contato')"
-			class="hover:text-[#c3b3d8] transition-colors cursor-pointer"
-			>Contato</a
-		>
+		<a (click)="scrollTo('home')" data-testid="anchorHome-headerComponent" class="hover:text-[#c3b3d8] transition-colors cursor-pointer">{{ i18n.t('nav.home') }}</a>
+		<a (click)="scrollTo('experiencia')" class="hover:text-[#c3b3d8] transition-colors cursor-pointer">{{ i18n.t('nav.experience') }}</a>
+		<a (click)="scrollTo('projetos')" class="hover:text-[#c3b3d8] transition-colors cursor-pointer">{{ i18n.t('nav.projects') }}</a>
+		<a (click)="scrollTo('tecnologias')" class="hover:text-[#c3b3d8] transition-colors cursor-pointer">{{ i18n.t('nav.stack') }}</a>
+		<a (click)="scrollTo('contato')" class="hover:text-[#c3b3d8] transition-colors cursor-pointer">{{ i18n.t('nav.contact') }}</a>
 	</nav>
 
-	<div class="hidden sm:flex space-x-2">
-		<a href="https://github.com/Joao-Vtr-Oliveira" target="_blank">
-			<button class="hover:!text-gray-400 duration-150" matIconButton>
-				<app-icon name="github" class="h-8" />
-			</button>
-		</a>
-		<a
-			href="https://www.linkedin.com/in/jo%C3%A3o-vitor-oliveira-b8b190252/"
-			target="_blank"
-		>
-			<button matIconButton class="group hover:!text-blue-500 duration-150">
-				<app-icon name="linkedin" class="h-8 text-inherit" />
-			</button>
-		</a>
+	<div class="hidden md:flex rounded border border-white/30 text-xs overflow-hidden" aria-label="Language selector">
+		<button type="button" class="locale-button" [class.locale-active]="i18n.locale() === 'pt-BR'" [attr.aria-pressed]="i18n.locale() === 'pt-BR'" (click)="switchLocale('pt-BR')">PT</button>
+		<button type="button" class="locale-button" [class.locale-active]="i18n.locale() === 'en'" [attr.aria-pressed]="i18n.locale() === 'en'" (click)="switchLocale('en')">EN</button>
+	</div>
+	<div class="flex md:hidden rounded border border-white/30 text-xs overflow-hidden" aria-label="Language selector">
+		<button type="button" class="locale-button" [class.locale-active]="i18n.locale() === 'pt-BR'" [attr.aria-pressed]="i18n.locale() === 'pt-BR'" (click)="switchLocale('pt-BR')">PT</button>
+		<button type="button" class="locale-button" [class.locale-active]="i18n.locale() === 'en'" [attr.aria-pressed]="i18n.locale() === 'en'" (click)="switchLocale('en')">EN</button>
 	</div>
 
-	<div class="block lg:hidden">
-		<button mat-icon-button (click)="drawer.open()" aria-label="Menu">
-			<mat-icon>menu</mat-icon>
-		</button>
+	<div class="hidden sm:flex space-x-2">
+		<a href="https://github.com/Joao-Vtr-Oliveira" target="_blank" rel="noopener noreferrer"><button class="hover:!text-gray-400 duration-150" matIconButton><app-icon name="github" class="h-8" /></button></a>
+		<a href="https://www.linkedin.com/in/jo%C3%A3o-vitor-oliveira-b8b190252/" target="_blank" rel="noopener noreferrer"><button matIconButton class="group hover:!text-blue-500 duration-150"><app-icon name="linkedin" class="h-8 text-inherit" /></button></a>
 	</div>
+
+	<div class="block lg:hidden"><button mat-icon-button (click)="drawer.open()" aria-label="Menu"><mat-icon>menu</mat-icon></button></div>
 </mat-toolbar>

@@ -25,6 +25,14 @@ describe('Experiences', () => {
 		expect(title.textContent).toContain('Experiência Profissional');
 	});
 
+	it('updates card content when the locale changes', () => {
+		component.i18n.setFromUrl('/en');
+		fixture.detectChanges();
+
+		expect(fixture.nativeElement.textContent).toContain('Full-stack Developer');
+		expect(fixture.nativeElement.textContent).not.toContain('Desenvolvedor Fullstack');
+	});
+
 	it('should render the same number of experience array length', () => {
 		const cards = fixture.nativeElement.querySelectorAll('mat-card');
 		expect(cards.length).toBe(component.experiences().length);
