@@ -1,40 +1,55 @@
-<section id='contato' class="w-full scroll-mt-20 px-4 py-16">
-	<div
-		class="max-w-5xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-10"
-	>
+<section id="contato" class="sec contact" aria-labelledby="contact-title">
+	<div class="wrap">
+		<p class="sec-tag" appReveal><span class="num">05</span><span class="bar"></span>{{ i18n.t('contact.kicker') }}</p>
 
-		<div class="flex-1 text-center lg:text-left space-y-6">
-			<h2 class="text-4xl font-bold text-blue-500">{{ i18n.t('contact.title') }}</h2>
-			<p class="text-sm sm:text-base">
-				{{ i18n.t('contact.text') }}
-			</p>
+		<h2 id="contact-title" class="contact__title" appReveal="80">{{ i18n.t('contact.title') }}</h2>
 
-			<div
-				class="flex flex-col sm:flex-row sm:justify-start justify-center items-center gap-4"
-			>
-
-				<a href="tel:+5531984169215" data-testid="anchorPhone-contactComponent">
-					<button mat-raised-button color="accent">
-						<mat-icon class="mr-1">call</mat-icon>
-						<span>(31) 9 8416-9215</span>
-					</button>
-				</a>
-
-				<a href="mailto:joao.vtr.oliveira@outlook.com">
-					<button mat-raised-button color="primary">
-						<mat-icon class="mr-1">email</mat-icon>
-						<span>{{ i18n.t('contact.email') }}</span>
-					</button>
+		<div class="contact__grid">
+			<div class="contact__main" appReveal="140">
+				<p class="contact__text">{{ i18n.t('contact.text') }}</p>
+				<a class="contact__mail" appMagnetic href="mailto:joao.vtr.oliveira@outlook.com" [attr.aria-label]="i18n.t('contact.email')">
+					<span class="contact__mail-label">{{ i18n.t('contact.email') }}</span>
+					<span class="contact__mail-addr">joao.vtr.oliveira&#64;outlook.com</span>
+					<span class="contact__mail-ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5l7-7m0 0H5.5m6 0v6" /></svg></span>
 				</a>
 			</div>
-		</div>
 
-		<div class="flex-1 flex justify-center">
-			<img
-				src="/images/cat-codding.gif"
-				alt="Gato programando"
-				class="w-72 sm:w-80 rounded-3xl shadow-lg hover:scale-105 transition-transform duration-300"
-			/>
+			<dl class="contact__list" appReveal="200">
+				<div>
+					<dt>{{ i18n.t('contact.phone') }}</dt>
+					<dd><a href="tel:+5531984169215" data-testid="anchorPhone-contactComponent">(31) 9 8416-9215</a></dd>
+				</div>
+				<div>
+					<dt>{{ i18n.t('contact.elsewhere') }}</dt>
+					<dd class="contact__socials">
+						<a href="https://github.com/Joao-Vtr-Oliveira" target="_blank" rel="noopener noreferrer"><app-icon name="github" class="h-5 w-5 fill-current" />GitHub</a>
+						<a href="https://www.linkedin.com/in/jo%C3%A3o-vitor-oliveira-b8b190252/" target="_blank" rel="noopener noreferrer"><app-icon name="linkedin" class="h-5 w-5 fill-current" />LinkedIn</a>
+					</dd>
+				</div>
+				<div>
+					<dt>{{ i18n.t('contact.cv') }}</dt>
+					<dd><a [href]="resumePath()" download>PDF ↓</a></dd>
+				</div>
+				<div>
+					<dt>{{ i18n.t('contact.base') }}</dt>
+					<dd>{{ i18n.t('hero.location') }}</dd>
+				</div>
+			</dl>
+
+			<figure class="contact__cat" appReveal="260">
+				<img src="/images/cat-codding.gif" [alt]="i18n.isEnglish() ? 'Cat programming' : 'Gato programando'" width="320" height="240" loading="lazy" />
+				<figcaption>build: passing ✓</figcaption>
+			</figure>
 		</div>
 	</div>
+
+	<div class="wordmark" aria-hidden="true">João Vitor</div>
+
+	<footer class="foot">
+		<div class="wrap foot__row">
+			<span>© {{ year }} João Vitor de Oliveira</span>
+			<span class="foot__built">{{ i18n.t('footer.built') }}</span>
+			<button type="button" class="foot__top" (click)="toTop()">{{ i18n.t('footer.top') }} ↑</button>
+		</div>
+	</footer>
 </section>

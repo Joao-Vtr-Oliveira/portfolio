@@ -13,5 +13,5 @@ import { ContactComponent } from "./contact-component/contact-component";
   styleUrl: './home.css'
 })
 export class Home {
-
+  readonly band = ['Angular', 'TypeScript', 'C# / .NET', 'Node.js', 'Fastify', 'PostgreSQL', 'Supabase', 'Docker', 'GitHub Actions', 'Cloudflare'];
 }

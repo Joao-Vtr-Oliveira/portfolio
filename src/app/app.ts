@@ -1,8 +1,6 @@
-import { Component, DOCUMENT, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, DOCUMENT, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MatSidenavModule, MatSidenav } from '@angular/material/sidenav';
 import { Header } from './header/header';
-import { Icon } from './shared/icon/icon';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -11,38 +9,16 @@ import { LocaleService } from './services/locale.service';
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet, MatSidenavModule, Header, Icon],
+	imports: [RouterOutlet, Header],
 	templateUrl: './app.html',
 	styleUrl: './app.css',
 })
 export class App implements OnInit {
-	@ViewChild('drawer') drawer!: MatSidenav;
 	router = inject(Router);
 	meta = inject(Meta);
 	title = inject(Title);
 	locale = inject(LocaleService);
 	document = inject(DOCUMENT);
-
-	goTo(route: string) {
-		window.location.href = route;
-	}
-
-	scrollTo(targetId: string) {
-		const target = document.getElementById(targetId);
-		if (target) {
-			target.scrollIntoView({
-				behavior: 'smooth',
-				block: 'start',
-			});
-		}
-		if (this.drawer && this.drawer.opened) {
-			this.drawer.close();
-		}
-	}
-
-	public isHome(): boolean {
-		return ['/pt-BR', '/en'].includes(window.location.pathname);
-	}
 
 	ngOnInit(): void {
 		const description = this.locale.isEnglish()

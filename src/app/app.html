@@ -1,75 +1,14 @@
-<mat-sidenav-container class="h-screen">
-	<mat-sidenav
-		#drawer
-		mode="over"
-		position="end"
-		class="max-w-full sm:w-64 w-4/5"
-		[autoFocus]="false"
-	>
-		<nav class="flex flex-col gap-4 p-6 text-blue-900 font-semibold">
-			<a
-				(click)="
-					drawer.close();
-					isHome()
-						? scrollTo('home')
-						: router.navigate(['/' + locale.locale()], { fragment: 'home' })
-				"
-				class="cursor-pointer"
-				>{{ locale.t('nav.home') }}</a
-			>
-			<a
-				(click)="
-					 drawer.close(); router.navigate(['/' + locale.locale()], { fragment: 'experiencia' })
-				"
-				class="cursor-pointer"
-				>{{ locale.t('nav.experience') }}</a
-			>
-			<a
-				(click)="
-					 drawer.close(); router.navigate(['/' + locale.locale()], { fragment: 'projetos' })
-				"
-				class="cursor-pointer"
-				>{{ locale.t('nav.projects') }}</a
-			>
-			<a
-				(click)="
-					 drawer.close(); router.navigate(['/' + locale.locale()], { fragment: 'tecnologias' })
-				"
-				class="cursor-pointer"
-				>{{ locale.t('nav.stack') }}</a
-			>
-			<a
-				(click)="
-					 drawer.close(); router.navigate(['/' + locale.locale()], { fragment: 'contato' })
-				"
-				class="cursor-pointer"
-				>{{ locale.t('nav.contact') }}</a
-			>
-			<!-- Redes sociais só em telas pequenas -->
-			<div class="flex gap-2 mt-6 sm:hidden">
-				<a href="https://github.com/Joao-Vtr-Oliveira" target="_blank">
-					<button class="hover:!text-gray-400 duration-150" matIconButton>
-						<app-icon name="github" class="h-8" />
-					</button>
-				</a>
-				<a
-					href="https://www.linkedin.com/in/jo%C3%A3o-vitor-oliveira-b8b190252/"
-					target="_blank"
-				>
-					<button matIconButton class="group hover:!text-blue-500 duration-150">
-						<app-icon name="linkedin" class="h-8 text-inherit" />
-					</button>
-				</a>
-			</div>
-		</nav>
-	</mat-sidenav>
+<a class="skip" href="#main">{{ locale.isEnglish() ? 'Skip to content' : 'Pular para o conteúdo' }}</a>
 
-	<app-header
-		[drawer]="drawer"
-		class="fixed top-0 left-0 w-full z-50"
-	></app-header>
+<div class="grain" aria-hidden="true"></div>
+<div class="emberfield" aria-hidden="true">
+	<span class="orb orb--a"></span>
+	<span class="orb orb--b"></span>
+	<span class="orb orb--c"></span>
+</div>
 
-	<div class="pt-[64px] sm:pt-[72px] h-full">
-		<router-outlet></router-outlet>
-	</div>
-</mat-sidenav-container>
+<app-header></app-header>
+
+<main id="main">
+	<router-outlet></router-outlet>
+</main>

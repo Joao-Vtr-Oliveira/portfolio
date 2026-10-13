@@ -34,15 +34,13 @@ describe('Experiences', () => {
 	});
 
 	it('should render the same number of experience array length', () => {
-		const cards = fixture.nativeElement.querySelectorAll('mat-card');
+		const cards = fixture.nativeElement.querySelectorAll('[data-testid="experience-card"]');
 		expect(cards.length).toBe(component.experiences().length);
 	});
 
 	it('should render the current professional experience', () => {
-		const cardTitle = fixture.nativeElement.querySelector('mat-card-title');
-		const cardContent = fixture.nativeElement.querySelector(
-			'mat-card-content p'
-		);
+		const cardTitle = fixture.nativeElement.querySelector('[data-testid="experience-title"]');
+		const cardContent = fixture.nativeElement.querySelector('.xp__bio p');
 		expect(cardTitle.textContent).toContain('Desenvolvedor Fullstack');
 		expect(cardContent.textContent).toContain(
 			'Atuei no desenvolvimento e manutenção de aplicações web'
@@ -50,16 +48,16 @@ describe('Experiences', () => {
 	});
 
 	it('should render the company and period', () => {
-		const subtitle = fixture.nativeElement.querySelector('mat-card-subtitle');
+		const subtitle = fixture.nativeElement.querySelector('[data-testid="experience-subtitle"]');
 		expect(subtitle.textContent).toContain('SHV Digital');
 		expect(subtitle.textContent).toContain('Jul. 2025 - Ago. 2026');
 	});
 
 	it('should render MeuBichin as a professional experience', () => {
 		const titles = Array.from(
-			fixture.nativeElement.querySelectorAll('mat-card-title')
+			fixture.nativeElement.querySelectorAll('[data-testid="experience-title"]')
 		).map((title: Element) => title.textContent);
-		const link = fixture.nativeElement.querySelector('a.customBtn');
+		const link = fixture.nativeElement.querySelector('a.xp__link');
 
 		expect(titles).toContain('Desenvolvedor Web Freelancer');
 		expect(link.getAttribute('href')).toBe(

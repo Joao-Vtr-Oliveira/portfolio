@@ -1,141 +1,63 @@
-<div
-	class="flex flex-col items-center min-h-[60vh] py-8 bg-gradient-to-br from-violet-900/30 to-indigo-900/10"
->
-	@if (repo()) {
-	<div class="max-w-xl w-full flex flex-col gap-8">
-		<mat-card
-			class="transition-shadow shadow-lg hover:shadow-2xl duration-200 rounded-2xl bg-white/90 dark:bg-gray-900/80"
-		>
-			<img
-				[src]="projectImg"
-				[alt]="repo()?.name + ' imagem'"
-				class="w-full h-60 object-cover rounded-t-2xl transition-transform duration-200 hover:scale-105"
-			/>
-			<mat-card-header>
-				<mat-card-title>
-					<a
-						[href]="repo()?.html_url"
-						target="_blank"
-						rel="noopener"
-						class="text-2xl font-bold text-blue-700 dark:text-blue-400 flex items-center gap-2 hover:underline hover:text-indigo-500 transition-colors"
-					>
-						<mat-icon class="text-indigo-500">folder</mat-icon>
-						{{ repo()?.name }}
-						<mat-icon
-							class="text-blue-400 group-hover:text-indigo-500 transition-colors"
-							>open_in_new</mat-icon
-						>
-					</a>
-				</mat-card-title>
-			</mat-card-header>
-			<mat-card-content>
-				@if (repo()?.description) {
-				<p class="mb-4 text-gray-700 dark:text-gray-200 italic">
-					{{ repo()?.description }}
-				</p>
-				}
-				<div
-					class="flex flex-wrap justify-center gap-6 text-base text-gray-700 dark:text-gray-200 mb-4 font-medium"
-				>
-					@if (repo()?.language) {
-					<span
-						class="flex items-center gap-1 hover:text-blue-600 transition-colors"
-					>
-						<mat-icon class="text-blue-400">code</mat-icon>
-						{{ repo()?.language }}
-					</span>
+<section class="repo">
+	<div class="wrap">
+		<a class="link repo__back" [routerLink]="['/', i18n.locale()]" fragment="projetos">
+			<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3m0 0 4-4M3 8l4 4" /></svg>
+			{{ i18n.t('nav.projects') }}
+		</a>
+
+		@if (repo()) {
+			<div class="repo__grid">
+				<div class="repo__info">
+					<p class="sec-tag"><span class="num">REPO</span><span class="bar"></span>GitHub</p>
+					<h1 class="repo__title">{{ repo()?.name }}</h1>
+					@if (repo()?.description) {
+						<p class="repo__desc">{{ repo()?.description }}</p>
 					}
-					<span
-						class="flex items-center gap-1 hover:text-yellow-600 transition-colors"
-					>
-						<mat-icon class="text-yellow-500">star</mat-icon>
-						{{ repo()?.stargazers_count }} Stars
-					</span>
-					<span
-						class="flex items-center gap-1 hover:text-pink-600 transition-colors"
-					>
-						<mat-icon class="text-pink-400">call_split</mat-icon>
-						{{ repo()?.forks_count }} Forks
-					</span>
-				</div>
-				<!-- Histórico de commits -->
-				<div>
-					<div
-						class="text-lg font-bold text-blue-600 flex items-center gap-2 mb-2"
-					>
-						<mat-icon class="text-blue-400">history</mat-icon>
-						Últimos Commits
-					</div>
-					@if (commits() && commits().length > 0) {
-					<ul>
-						@for (commit of commits().slice(0, 10); track commit.sha) {
-						<li
-							class="mb-4 border-b border-gray-200 pb-2 flex flex-col gap-1 group"
-						>
-							<span
-								[ngClass]="getCommitClass(commit.commit?.message)"
-								class="flex items-center gap-2 transition-colors"
-							>
-								<mat-icon
-									class="transition-colors"
-									[ngClass]="{
-										'text-green-600':
-											getCommitIcon(commit.commit?.message) === 'new_releases',
-										'text-yellow-600':
-											getCommitIcon(commit.commit?.message) === 'build',
-										'text-blue-600':
-											getCommitIcon(commit.commit?.message) === 'science',
-										'text-purple-600':
-											getCommitIcon(commit.commit?.message) === 'sync_alt',
-										'text-orange-600':
-											getCommitIcon(commit.commit?.message) === 'description',
-										'text-gray-500':
-											getCommitIcon(commit.commit?.message) === 'commit'
-									}"
-								>
-									{{ getCommitIcon(commit.commit?.message) }}
-								</mat-icon>
-								{{ commit.commit?.message }}
-							</span>
-							<div class="text-xs text-gray-500">
-								{{ commit.commit?.author?.name }} -
-								{{ commit.commit?.author?.date | date : "short" }}
-							</div>
-							<a
-								class="text-blue-500 text-xs underline hover:text-indigo-600 transition-colors"
-								[href]="commit.html_url"
-								target="_blank"
-								rel="noopener"
-							>
-								Ver no GitHub
-							</a>
-						</li>
+					<dl class="repo__stats">
+						@if (repo()?.language) {
+							<div><dt>Language</dt><dd>{{ repo()?.language }}</dd></div>
 						}
-					</ul>
-					} @else {
-					<div class="text-gray-400">Nenhum commit encontrado.</div>
-					}
+						<div><dt>Stars</dt><dd>{{ repo()?.stargazers_count }}</dd></div>
+						<div><dt>Forks</dt><dd>{{ repo()?.forks_count }}</dd></div>
+					</dl>
+					<a class="btn btn--primary" [href]="repo()?.html_url" target="_blank" rel="noopener noreferrer">
+						{{ i18n.isEnglish() ? 'View on GitHub' : 'Ver no GitHub' }}
+						<span class="btn__ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5l7-7m0 0H5.5m6 0v6" /></svg></span>
+					</a>
 				</div>
-			</mat-card-content>
-			<mat-card-actions align="end" class="mt-4">
-				<a
-					mat-raised-button
-					color="primary"
-					[href]="repo()?.html_url"
-					target="_blank"
-					class="transition-transform hover:scale-105"
-				>
-					<mat-icon>open_in_new</mat-icon>
-					Ver no GitHub
-				</a>
-			</mat-card-actions>
-		</mat-card>
-	</div>
-	} @else {
-	<div class="max-w-xl w-full text-center py-10">
-		@if (loading()) { Carregando... } @else {
-		{{ error() || "Erro ao carregar o repositório." }}
+
+				@if (projectImg) {
+					<div class="bezel repo__shot">
+						<div class="bezel__core frame"><img [src]="projectImg" [alt]="repo()?.name + ' imagem'" /></div>
+					</div>
+				}
+			</div>
+
+			<div class="repo__log">
+				<h2 class="repo__log-title"><mat-icon aria-hidden="true">history</mat-icon>{{ i18n.isEnglish() ? 'Latest commits' : 'Últimos commits' }}</h2>
+				@if (commits() && commits().length > 0) {
+					<ol class="commits">
+						@for (commit of commits().slice(0, 10); track commit.sha) {
+							<li class="commit">
+								<span [class]="getCommitClass(commit.commit?.message)"><mat-icon aria-hidden="true">{{ getCommitIcon(commit.commit?.message) }}</mat-icon></span>
+								<div class="commit__body">
+									<p class="commit__msg">{{ commit.commit?.message }}</p>
+									<p class="commit__meta">{{ commit.commit?.author?.name }} · {{ commit.commit?.author?.date | date: 'short' }}</p>
+								</div>
+								<a class="link" [href]="commit.html_url" target="_blank" rel="noopener noreferrer">{{ commit.sha.slice(0, 7) }}</a>
+							</li>
+						}
+					</ol>
+				} @else {
+					<p class="repo__empty">{{ i18n.isEnglish() ? 'No commits found.' : 'Nenhum commit encontrado.' }}</p>
+				}
+			</div>
+		} @else {
+			<p class="repo__empty">
+				@if (loading()) { {{ i18n.isEnglish() ? 'Loading…' : 'Carregando…' }} } @else {
+					{{ error() || (i18n.isEnglish() ? 'Could not load the repository.' : 'Erro ao carregar o repositório.') }}
+				}
+			</p>
 		}
 	</div>
-	}
-</div>
+</section>

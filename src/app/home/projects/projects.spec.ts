@@ -29,15 +29,15 @@ describe('Projects', () => {
 	});
 	it('should render the same number of projects array length', () => {
 		const cards: HTMLElement[] =
-			fixture.nativeElement.querySelectorAll('mat-card');
+			fixture.nativeElement.querySelectorAll('.project-card');
 		expect(cards.length).toBe(component.projects().length);
 	});
 	it('should render correctaly every project', () => {
 		const cards: HTMLElement[] =
-			fixture.nativeElement.querySelectorAll('mat-card');
+			fixture.nativeElement.querySelectorAll('.project-card');
 
 		cards.forEach((card) => {
-			const name = card.querySelector('mat-card-title');
+			const name = card.querySelector('[data-testid="project-title"]');
 			const item = component
 				.projects()
 				.find((item) => item.name === name!.textContent);
