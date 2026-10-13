@@ -1,13 +1,21 @@
-import { Component, inject } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { Component, computed, inject } from '@angular/core';
 import { LocaleService } from '../../services/locale.service';
+import { Icon } from '../../shared/icon/icon';
+import { Magnetic, Reveal } from '../../shared/motion/motion';
 
 @Component({
   selector: 'app-contact-component',
-  imports: [MatIconModule, MatButtonModule],
+  imports: [Icon, Magnetic, Reveal],
   templateUrl: './contact-component.html',
 })
 export class ContactComponent {
 	readonly i18n = inject(LocaleService);
+	readonly year = new Date().getFullYear();
+	readonly resumePath = computed(() => this.i18n.isEnglish()
+		? '/docs/Joao_Vitor_Oliveira_Resume_EN.pdf'
+		: '/docs/Curriculo_Joao_Vitor_Oliveira_Atualizado.pdf');
+
+	toTop(): void {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
 }

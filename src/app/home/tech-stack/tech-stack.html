@@ -1,87 +1,33 @@
-<section id='tecnologias' class="w-full scroll-mt-20 px-4 py-12">
-	<div class="max-w-5xl mx-auto text-center">
-		<h2 class="text-3xl text-blue-600 font-bold mb-6">
-			{{ i18n.t('stack.title') }}
-		</h2>
-		<p class=" mb-12 text-sm sm:text-base">
-			{{ i18n.t('stack.description') }}
-		</p>
-
-		<div
-			class="grid grid-cols-1 md:grid-cols-3 gap-8"
-		>
-			<!-- Frontend -->
-			<div>
-				<h3 class="text-xl font-semibold mb-4 text-center">Front-end</h3>
-				<div class="flex flex-wrap justify-center gap-4">
-					@for (tech of frontendIcons; track tech.name) {
-					<div
-						class="relative group hover:scale-105 transition-transform duration-200"
-					>
-						<img
-							[src]="'https://skillicons.dev/icons?i=' + tech.icon"
-							[alt]="tech.name"
-							class="h-10"
-							loading="lazy"
-						/>
-						<span
-							class="absolute top-[-1.75rem] left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-gray-800 text-white"
-						>
-							{{ tech.name }}
-						</span>
-					</div>
-					}
-				</div>
-			</div>
-
-			<!-- Backend -->
-			<div>
-				<h3 class="text-xl font-semibold mb-4 text-center">Back-end</h3>
-				<div class="flex flex-wrap justify-center gap-4">
-					@for (tech of backendIcons; track tech.name) {
-					<div
-						class="relative group hover:scale-105 transition-transform duration-200"
-					>
-						<img
-							[src]="'https://skillicons.dev/icons?i=' + tech.icon"
-							[alt]="tech.name"
-							class="h-10"
-							loading="lazy"
-						/>
-						<span
-							class="absolute top-[-1.75rem] left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-gray-800 text-white"
-						>
-							{{ tech.name }}
-						</span>
-					</div>
-					}
-				</div>
-			</div>
-
-			<!-- Tools -->
-			<div>
-				<h3 class="text-xl font-semibold mb-4 text-center">{{ i18n.t('stack.tools') }}</h3>
-				<div class="flex flex-wrap justify-center gap-4">
-					@for (tech of toolsIcons; track tech.name) {
-					<div
-						class="relative group hover:scale-105 transition-transform duration-200"
-					>
-						<img
-							[src]="'https://skillicons.dev/icons?i=' + tech.icon"
-							[alt]="tech.name"
-							class="h-10"
-							loading="lazy"
-						/>
-						<span
-							class="absolute top-[-1.75rem] left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-gray-800 text-white"
-						>
-							{{ tech.name }}
-						</span>
-					</div>
-					}
-				</div>
-				<p class="mt-5 text-sm text-gray-400">{{ i18n.t('stack.note') }}</p>
-			</div>
+<section id="tecnologias" class="sec stack" aria-labelledby="stack-title">
+	<div class="wrap">
+		<div class="sec-head stack__head">
+			<p class="sec-tag" appReveal><span class="num">04</span><span class="bar"></span>{{ i18n.t('stack.kicker') }}</p>
+			<h2 id="stack-title" class="sec-title" appReveal="80">{{ i18n.t('stack.title') }}</h2>
+			<p class="sec-lede" appReveal="140">{{ i18n.t('stack.description') }}</p>
 		</div>
+
+		<div class="stack__grid">
+			@for (group of groups; track group.code; let g = $index) {
+				<div class="stack__group bezel" appSpotlight [appReveal]="g * 110">
+					<div class="bezel__core stack__core">
+						<header class="stack__top">
+							<span class="stack__code">{{ group.code }}</span>
+							<h3>{{ group.code === 'OPS' ? i18n.t(group.title) : group.title }}</h3>
+							<span class="stack__count">{{ group.icons.length }}</span>
+						</header>
+						<ul class="stack__icons">
+							@for (tech of group.icons; track tech.name; let i = $index) {
+								<li class="stack__tile" [style.--i]="i">
+									<img [src]="iconUrl(tech.icon)" [alt]="tech.name" width="40" height="40" loading="lazy" />
+									<span>{{ tech.name }}</span>
+								</li>
+							}
+						</ul>
+					</div>
+				</div>
+			}
+		</div>
+
+		<p class="stack__note" appReveal><span aria-hidden="true">+</span> {{ i18n.t('stack.note') }}</p>
 	</div>
 </section>

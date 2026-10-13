@@ -1,122 +1,101 @@
-<section id="projetos" class="w-full scroll-mt-20 px-4 py-10">
-	<div class="mx-auto max-w-7xl">
-		<h2
-			data-testid="heading2-projectsComponent"
-			class="text-3xl font-bold text-center mb-10 text-blue-500"
-		>
-			{{ i18n.t('projects.title') }}
-		</h2>
-		<p class="projects-intro">
-			{{ i18n.t('projects.intro') }}
-		</p>
+<section id="projetos" class="sec work" aria-labelledby="work-title">
+	<div class="wrap">
+		<div class="sec-head work__head">
+			<p class="sec-tag" appReveal><span class="num">03</span><span class="bar"></span>{{ i18n.t('projects.kicker') }}</p>
+			<h2 id="work-title" class="sec-title" data-testid="heading2-projectsComponent" appReveal="80">{{ i18n.t('projects.title') }}</h2>
+			<p class="sec-lede" appReveal="140">{{ i18n.t('projects.intro') }}</p>
+		</div>
 
-		<article class="forge-feature" aria-labelledby="forge-title">
-			<div class="forge-feature-copy">
-				<p class="forge-eyebrow">{{ i18n.t('forge.kicker') }}</p>
-				<img class="forge-wordmark" src="/images/atronos-forge/wordmark.svg" alt="Atronos Forge" width="1200" height="320" />
-				<h3 id="forge-title" class="forge-title">Atronos Forge</h3>
-				<p class="forge-tagline">{{ i18n.t('forge.tagline') }}</p>
-				<p class="forge-summary">{{ i18n.t('forge.summary') }}</p>
-				<p class="forge-meta">Angular + TypeScript <span aria-hidden="true">·</span> Node.js + Fastify <span aria-hidden="true">·</span> PostgreSQL / Supabase <span aria-hidden="true">·</span> PT-BR · EN · ES</p>
-				<div class="forge-actions">
-					<button type="button" class="forge-button" (click)="openAtronosDetail()">{{ i18n.t('forge.explore') }} <span aria-hidden="true">↗</span></button>
-					<a href="https://atronos-forge.com" target="_blank" rel="noopener noreferrer">{{ i18n.t('forge.hub') }} <span aria-hidden="true">↗</span></a>
+		<article class="forge-feature bezel" aria-labelledby="forge-title" appReveal>
+			<div class="bezel__core forge__core">
+				<div class="forge__copy">
+					<p class="forge__kicker"><span class="dot" aria-hidden="true"></span>{{ i18n.t('projects.featured') }} · {{ i18n.t('forge.kicker') }}</p>
+					<img class="forge__wordmark" src="/images/atronos-forge/wordmark.svg" alt="" width="1200" height="320" />
+					<h3 id="forge-title" class="sr-only">Atronos Forge</h3>
+					<p class="forge__tagline">{{ i18n.t('forge.tagline') }}</p>
+					<p class="forge__summary">{{ i18n.t('forge.summary') }}</p>
+
+					<ul class="forge__products">
+						@for (product of forgeProducts; track product.name) {
+							<li><img [src]="product.mark" alt="" width="28" height="28" />{{ product.name }}</li>
+						}
+					</ul>
+
+					<div class="chips forge__chips">
+						<span class="chip">Angular + TypeScript</span>
+						<span class="chip">Node.js + Fastify</span>
+						<span class="chip">PostgreSQL / Supabase</span>
+						<span class="chip">PT-BR · EN · ES</span>
+					</div>
+
+					<div class="forge__actions">
+						<a class="btn btn--ghost" appMagnetic href="https://atronos-forge.com" target="_blank" rel="noopener noreferrer">
+							{{ i18n.t('forge.hub') }}
+							<span class="btn__ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5l7-7m0 0H5.5m6 0v6" /></svg></span>
+						</a>
+						<button type="button" class="btn btn--primary forge-button" appMagnetic (click)="openAtronosDetail()">
+							{{ i18n.t('forge.explore') }}
+							<span class="btn__ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10m0 0L9 4m4 4-4 4" /></svg></span>
+						</button>
+					</div>
 				</div>
-			</div>
-			<div class="forge-feature-visual">
-				<img src="/images/atronos-forge/player-play-mobile.webp" alt="Atronos Forge Player: cockpit de sessão mobile com vida, defesa e ações da ficha de demonstração" width="390" height="844" loading="lazy" />
-				<span>PLAYER / MOBILE-FIRST</span>
+
+				<div class="forge__stage" aria-hidden="true">
+					<div class="forge__glow"></div>
+					<img class="forge__desk" src="/images/atronos-forge/hub.webp" alt="" width="1440" height="950" loading="lazy" />
+					<div class="forge__phone">
+						<img src="/images/atronos-forge/player-play-mobile.webp" alt="" width="390" height="844" loading="lazy" />
+					</div>
+					<span class="forge__label">PLAYER / MOBILE-FIRST</span>
+				</div>
 			</div>
 		</article>
 
-		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-			@for (project of projects(); track project.id) {
+		<div class="work__more" appReveal>
+			<span>{{ i18n.t('projects.more') }}</span>
+			<span class="work__count">{{ projects().length < 10 ? '0' + projects().length : projects().length }}</span>
+		</div>
 
-			<mat-card
-				appearance="outlined"
-				class="project-card w-full min-h-[600px] flex flex-col justify-between rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:scale-[1.01] bg-white dark:bg-gray-800"
-				[class.project-card-featured]="project.featured"
-			>
-				@if (project.featured) {
-				<div class="featured-badge">
-					<mat-icon>auto_awesome</mat-icon>
-					Projeto em destaque
-				</div>
-				}
-				<img
-					mat-card-image
-					[src]="project.imgSrc"
-					[alt]="project.name + ' imagem'"
-					class="project-card-image aspect-video object-cover w-full"
-				/>
-
-				<mat-card-header>
-					<mat-card-title class="text-lg font-semibold">{{
-						project.name
-					}}</mat-card-title>
-				</mat-card-header>
-
-				<mat-card-content class="px-4 pb-4">
-					<pre
-						class="whitespace-pre-wrap break-words text-sm text-gray-700 dark:text-gray-300"
-						>{{ project.bio }}
-					</pre
-					>
-				</mat-card-content>
-
-				<div class="px-4 mt-2">
-					<img
-						[src]="project.tech"
-						[alt]="project.name + ' stack'"
-						class="w-full h-8 object-contain"
-						loading="lazy"
-					/>
-				</div>
-
-				<!-- Botões de ação -->
-				<mat-card-actions align="end">
-					<div class="flex flex-col sm:flex-row gap-3 w-full">
-						@if (project.repoLink) {
-						<a
-							matFab
-							extended
-							class="customBtn"
-							[routerLink]="['/', i18n.locale(), 'repo', project.repoLink.split('/').pop()]"
-						>
-							<span class="flex items-center gap-2">
-								<mat-icon>info</mat-icon>
-								{{ i18n.t('card.details') }}
-							</span>
-						</a>
-						<a
-							matFab
-							extended
-							class="customBtn"
-							[href]="project.repoLink"
-							target="_blank"
-						>
-							<span class="flex items-center gap-2">
-								<app-icon name="github" />
-								Github
-							</span>
-						</a>
-						}
-						@if (project.deployLink) {
-						<a
-							class="customBtn"
-							matFab
-							extended
-							[href]="project.deployLink"
-							target="_blank"
-						>
-							<mat-icon>link</mat-icon>
-							{{ i18n.t('card.page') }}
-						</a>
-						}
+		<div class="work__grid">
+			@for (project of projects(); track project.id; let i = $index) {
+				<article class="project-card bezel" appSpotlight [appReveal]="(i % 3) * 90">
+					<div class="bezel__core card__core">
+						<div class="card__media frame">
+							<img [src]="project.imgSrc" [alt]="project.name + ' imagem'" loading="lazy" />
+							<span class="card__index">{{ i + 1 < 10 ? '0' + (i + 1) : i + 1 }}</span>
+						</div>
+						<div class="card__body">
+							<h3 class="card__title" data-testid="project-title">{{ project.name }}</h3>
+							<p class="card__summary">{{ project.summary }}</p>
+							@if (project.points.length) {
+								<ul class="card__points">
+									@for (point of project.points; track $index) {
+										<li>{{ point }}</li>
+									}
+								</ul>
+							}
+							<img class="card__stack" [src]="project.tech" [alt]="project.name + ' stack'" loading="lazy" />
+							<div class="card__actions">
+								@if (project.repoLink) {
+									<a class="link" [routerLink]="['/', i18n.locale(), 'repo', project.repoName]">
+										{{ i18n.t('card.details') }}
+										<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10m0 0L9 4m4 4-4 4" /></svg>
+									</a>
+									<a class="link" [href]="project.repoLink" target="_blank" rel="noopener noreferrer">
+										<app-icon name="github" class="h-4 w-4 fill-current" />
+										{{ i18n.t('card.repo') }}
+									</a>
+								}
+								@if (project.deployLink) {
+									<a class="link link--hot" [href]="project.deployLink" target="_blank" rel="noopener noreferrer">
+										{{ i18n.t('card.page') }}
+										<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7m0 0H5.5m6 0v6" /></svg>
+									</a>
+								}
+							</div>
+						</div>
 					</div>
-				</mat-card-actions>
-			</mat-card>
-
+				</article>
 			}
 		</div>
 	</div>

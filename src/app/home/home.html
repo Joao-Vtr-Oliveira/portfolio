@@ -1,12 +1,19 @@
-<div
-	class="w-full min-h-screen flex items-center justify-center overflow-x-hidden"
->
-	<div class="flex flex-col gap-5 items-center pt-25">
-		<app-introduction />
-		<app-about-me />
-		<app-experience />
-		<app-projects />
-		<app-tech-stack />
-		<app-contact-component />
+<app-introduction />
+
+<div class="band" aria-hidden="true">
+	<div class="band__track">
+		@for (pass of [0, 1]; track pass) {
+			<div class="band__set">
+				@for (word of band; track word) {
+					<span>{{ word }}</span><i>✦</i>
+				}
+			</div>
+		}
 	</div>
 </div>
+
+<app-about-me />
+<app-experience />
+<app-projects />
+<app-tech-stack />
+<app-contact-component />

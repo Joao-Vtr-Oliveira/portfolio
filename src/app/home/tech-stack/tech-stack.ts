@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { LocaleService } from '../../services/locale.service';
+import { Reveal, Spotlight } from '../../shared/motion/motion';
 
 @Component({
 	selector: 'app-tech-stack',
+	imports: [Reveal, Spotlight],
 	templateUrl: './tech-stack.html',
 })
 export class TechStackComponent {
@@ -47,4 +49,14 @@ export class TechStackComponent {
 		{ name: 'Azure', icon: 'azure' },
 		{ name: 'Linux', icon: 'linux' },
 	];
+
+	readonly groups = [
+		{ code: 'FE', title: 'Front-end', icons: this.frontendIcons },
+		{ code: 'BE', title: 'Back-end', icons: this.backendIcons },
+		{ code: 'OPS', title: 'stack.tools', icons: this.toolsIcons },
+	];
+
+	iconUrl(icon: string): string {
+		return 'https://skillicons.dev/icons?i=' + icon;
+	}
 }

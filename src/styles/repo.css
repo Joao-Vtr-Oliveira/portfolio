@@ -1,0 +1,164 @@
+/* ============================================================
+   REPO — repository detail route
+   ============================================================ */
+.repo {
+	position: relative;
+	z-index: var(--z-base);
+	min-height: 100svh;
+	padding: clamp(120px, 14vh, 160px) 0 120px;
+}
+
+.repo__back svg {
+	transform: none !important;
+}
+
+.repo__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	align-items: center;
+	gap: clamp(32px, 5vw, 72px);
+	margin-top: 48px;
+}
+
+.repo__info {
+	display: grid;
+	justify-items: start;
+	gap: 22px;
+}
+
+.repo__title {
+	font-size: clamp(2.6rem, 6.4vw, 5.6rem);
+	letter-spacing: -0.05em;
+	overflow-wrap: anywhere;
+}
+
+.repo__desc {
+	max-width: 50ch;
+	color: var(--bone-2);
+	font-size: 1.1rem;
+}
+
+.repo__stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0;
+	margin: 0;
+	border: 1px solid var(--line);
+	border-radius: var(--r-sm);
+}
+
+.repo__stats > div {
+	padding: 12px 22px;
+	border-right: 1px solid var(--line);
+}
+
+.repo__stats > div:last-child {
+	border-right: 0;
+}
+
+.repo__stats dt {
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: 10px;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.repo__stats dd {
+	margin: 4px 0 0;
+	font-size: 1.4rem;
+	font-weight: 600;
+}
+
+.repo__shot .bezel__core {
+	aspect-ratio: 16 / 10;
+}
+
+.repo__log {
+	margin-top: clamp(64px, 8vw, 110px);
+}
+
+.repo__log-title {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding-bottom: 18px;
+	border-bottom: 1px solid var(--line-2);
+	font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+}
+
+.repo__log-title mat-icon {
+	color: var(--ember);
+}
+
+.commits {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.commit {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 18px;
+	padding: 18px 0;
+	border-bottom: 1px solid var(--line);
+	transition: background-color var(--t-fast) var(--ease);
+}
+
+.commit:hover {
+	background: var(--glass);
+}
+
+.commit__tag {
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: var(--glass-2);
+	color: var(--bone-2);
+}
+
+.commit__tag mat-icon {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+}
+
+.commit__tag--feat { background: oklch(0.72 0.17 150 / 0.16); color: oklch(0.8 0.17 150); }
+.commit__tag--fix { background: oklch(0.8 0.15 85 / 0.16); color: oklch(0.85 0.15 85); }
+.commit__tag--test { background: oklch(0.7 0.14 240 / 0.16); color: oklch(0.78 0.13 240); }
+.commit__tag--refactor { background: oklch(0.64 0.196 293 / 0.18); color: oklch(0.76 0.15 293); }
+.commit__tag--docs { background: oklch(0.705 0.196 40 / 0.16); color: var(--ember); }
+
+.commit__msg {
+	overflow: hidden;
+	color: var(--bone);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.commit__meta {
+	margin-top: 2px;
+	color: var(--muted);
+	font-family: var(--font-mono);
+	font-size: 11px;
+}
+
+.repo__empty {
+	padding: 40px 0;
+	color: var(--muted);
+	font-family: var(--font-mono);
+}
+
+@media (max-width: 799px) {
+	.repo__grid {
+		grid-template-columns: 1fr;
+	}
+
+	.repo__shot {
+		order: -1;
+	}
+}

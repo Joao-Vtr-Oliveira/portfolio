@@ -1,60 +1,38 @@
-<section id="experiencia" class="w-full scroll-mt-20 px-4 py-10">
-	<div class="mx-auto max-w-7xl">
-		<h2 class="text-3xl font-bold text-center mb-10 text-blue-500">
-			{{ i18n.t('experience.title') }}
-		</h2>
-
-		<div class="flex flex-col justify-center gap-8">
-			@for (experience of experiences(); track experience.id) {
-
-			<mat-card
-				appearance="outlined"
-				class="w-full max-w-5xl flex flex-col justify-between rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:scale-[1.01] bg-white dark:bg-gray-800"
-			>
-				<mat-card-header>
-					<mat-card-title class="text-lg font-semibold">{{
-						experience.role
-					}}</mat-card-title>
-					<mat-card-subtitle
-						>{{ experience.company }} · {{ experience.period }}</mat-card-subtitle
-					>
-				</mat-card-header>
-
-				<mat-card-content class="px-4 pb-4">
-					<p
-						class="whitespace-pre-line break-words text-sm text-gray-700 dark:text-gray-300"
-					>
-						{{ experience.bio }}
-					</p>
-				</mat-card-content>
-
-				<div class="px-4 mt-2 mb-2">
-					<img
-						[src]="experience.tech"
-						[alt]="experience.role + ' stack'"
-						class="max-w-full h-8 object-contain"
-						loading="lazy"
-					/>
-				</div>
-
-				@if (experience.deployLink) {
-				<mat-card-actions align="end" class="px-4 pb-4">
-					<a
-						class="customBtn"
-						matFab
-						extended
-						[href]="experience.deployLink"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<mat-icon>link</mat-icon>
-						Page
-					</a>
-				</mat-card-actions>
-				}
-			</mat-card>
-
-			}
+<section id="experiencia" class="sec xp" aria-labelledby="xp-title">
+	<div class="wrap">
+		<div class="sec-head">
+			<p class="sec-tag" appReveal><span class="num">02</span><span class="bar"></span>{{ i18n.t('experience.kicker') }}</p>
+			<h2 id="xp-title" class="sec-title" appReveal="80">{{ i18n.t('experience.title') }}</h2>
+			<p class="sec-lede" appReveal="140">{{ i18n.t('experience.lede') }}</p>
 		</div>
+
+		<ol class="xp__list">
+			@for (experience of experiences(); track experience.id; let i = $index) {
+				<li class="xp__row" data-testid="experience-card" appSpotlight [appReveal]="i * 120">
+					<div class="xp__when">
+						<span class="xp__index">{{ i + 1 < 10 ? '0' + (i + 1) : i + 1 }}</span>
+						<span class="xp__period" data-testid="experience-subtitle">{{ experience.company }} · {{ experience.period }}</span>
+					</div>
+					<div class="xp__body">
+						<h3 class="xp__role" data-testid="experience-title">{{ experience.role }}</h3>
+						<p class="xp__company" aria-hidden="true">{{ experience.company }}</p>
+						<div class="xp__bio">
+							@for (paragraph of experience.paragraphs; track $index) {
+								<p>{{ paragraph }}</p>
+							}
+						</div>
+					</div>
+					<div class="xp__aside">
+						<img [src]="experience.tech + '&perline=5'" [alt]="experience.role + ' stack'" class="xp__stack" loading="lazy" />
+						@if (experience.deployLink) {
+							<a class="link xp__link" [href]="experience.deployLink" target="_blank" rel="noopener noreferrer">
+								{{ i18n.t('experience.visit') }}
+								<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7m0 0H5.5m6 0v6" /></svg>
+							</a>
+						}
+					</div>
+				</li>
+			}
+		</ol>
 	</div>
 </section>
