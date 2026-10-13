@@ -1,0 +1,32 @@
+:host { display: block; background: #13111e; color: #eee9f7; }
+.forge-detail { font-family: Roboto, 'Helvetica Neue', sans-serif; }
+.detail-header { display: flex; align-items: start; justify-content: space-between; gap: 1rem; padding: 1.5rem 1.75rem .5rem; }
+.detail-header h2 { margin: .3rem 0 0; color: #fff; font-size: clamp(1.5rem, 4vw, 2.2rem); line-height: 1.2; }
+.detail-kicker, .detail-heading span { color: #ae98df; font-size: .73rem; letter-spacing: .13em; font-weight: 700; }
+.detail-close { flex: none; width: 44px; height: 44px; border: 1px solid #736093; border-radius: 50%; color: #fff; cursor: pointer; }
+.detail-close:hover { background: #35254d; }
+.detail-content { max-height: calc(90dvh - 180px) !important; overflow-y: auto !important; padding: .5rem 1.75rem 1.75rem !important; color: #d5cfdf; line-height: 1.65; }
+.detail-lead { font-size: 1.05rem; max-width: 48rem; }
+.detail-section { padding: 1.8rem 0; border-top: 1px solid #41344f; }
+.detail-heading { display: flex; align-items: center; gap: .85rem; }
+.detail-heading img { width: 42px; height: 42px; object-fit: contain; }
+.detail-section h3 { color: #fff; font-size: 1.45rem; margin: .15rem 0; }
+.detail-section p { max-width: 49rem; }
+.detail-section strong { color: #f4edff; }
+figure { margin: 1.25rem 0 0; }
+figure img { display: block; max-width: 100%; height: auto; border: 1px solid #564268; border-radius: .75rem; }
+.detail-wide img { width: 100%; }
+.detail-mobile img { width: min(100%, 300px); }
+figcaption { margin-top: .5rem; color: #ae98df; font-size: .82rem; }
+.detail-decisions { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+.detail-decisions li { padding: 1rem; border: 1px solid #453656; border-radius: .75rem; background: #20192c; }
+.detail-stack { margin-top: 1.5rem; }
+.detail-footer { display: flex; flex-wrap: wrap; gap: .7rem 1.5rem; padding: 1rem 1.75rem 1.4rem; border-top: 1px solid #41344f; }
+.detail-footer a { color: #c9adff; font-weight: 700; text-underline-offset: 4px; }
+.forge-detail :is(a,button):focus-visible { outline: 3px solid #c9adff; outline-offset: 3px; }
+@media (max-width: 620px) {
+  .detail-header { padding: 1rem 1rem .25rem; }
+  .detail-content { padding: .5rem 1rem 1rem !important; }
+  .detail-decisions { grid-template-columns: 1fr; }
+  .detail-footer { padding: .9rem 1rem 1.1rem; }
+}

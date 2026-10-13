@@ -45,25 +45,27 @@ describe('Projects', () => {
 		});
 	});
 
-	it('should highlight the two D&D projects', () => {
+	it('should present Atronos Forge as one platform rather than two helper cards', () => {
 		const featuredCards = fixture.nativeElement.querySelectorAll(
 			'.project-card-featured'
 		);
 
-		expect(featuredCards.length).toBe(2);
-		expect(fixture.nativeElement.textContent).toContain('Projeto em destaque');
+		expect(featuredCards.length).toBe(0);
+		expect(fixture.nativeElement.querySelectorAll('.forge-feature').length).toBe(1);
+		expect(fixture.nativeElement.textContent).toContain('Atronos Forge');
+		expect(fixture.nativeElement.querySelector('.forge-feature a')?.getAttribute('href'))
+			.toBe('https://atronos-forge.com');
 	});
 
-	it('should not expose private repository links for the D&D projects', () => {
-		const cards: HTMLElement[] = Array.from(
-			fixture.nativeElement.querySelectorAll('mat-card'),
-		);
-
-		for (const projectName of ['D&D Dungeon Master Helper', 'D&D Player Helper']) {
-			const card = cards.find((item) => item.textContent?.includes(projectName));
-
-			expect(card).toBeTruthy();
-			expect(card?.querySelector('a[href*="github.com"]')).toBeNull();
-		}
+	it('opens a deep dive with distinct products and verified public links', async () => {
+		fixture.nativeElement.querySelector('.forge-button').click();
+		await fixture.whenStable();
+		fixture.detectChanges();
+		const dialog = document.querySelector('mat-dialog-container');
+		expect(dialog?.textContent).toContain('Dungeon Master');
+		expect(dialog?.textContent).toContain('IndexedDB');
+		expect(dialog?.querySelector('a[href="https://player.atronos-forge.com/"]'))
+			.toBeTruthy();
+		dialog?.querySelector<HTMLButtonElement>('.detail-close')?.click();
 	});
 });

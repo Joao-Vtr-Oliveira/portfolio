@@ -27,4 +27,8 @@ describe('AboutMe', () => {
 
     expect(h1.textContent).toContain('Sobre mim')
   })
+  it('mentions infrastructure and CI/CD work', () => {
+    expect(fixture.nativeElement.textContent).toContain('GitHub Actions');
+    expect(fixture.nativeElement.textContent).toContain('Cloudflare Tunnel');
+  });
 });

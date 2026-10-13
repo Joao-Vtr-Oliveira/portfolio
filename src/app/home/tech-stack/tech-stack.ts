@@ -27,6 +27,7 @@ export class TechStackComponent {
 		{ name: 'MongoDB', icon: 'mongodb' },
 		{ name: 'MySQL', icon: 'mysql' },
 		{ name: 'PostgreSQL', icon: 'postgres' },
+		{ name: 'Supabase', icon: 'supabase' },
 		{ name: 'Sequelize', icon: 'sequelize' },
 		{ name: 'Prisma', icon: 'prisma' },
 	];
@@ -37,6 +38,10 @@ export class TechStackComponent {
 		{ name: 'Postman', icon: 'postman' },
 		{ name: 'Docker', icon: 'docker' },
 		{ name: 'Jest', icon: 'jest' },
+		{ name: 'Vitest', icon: 'vitest' },
+		{ name: 'GitHub Actions', icon: 'githubactions' },
+		{ name: 'Cloudflare', icon: 'cloudflare' },
+		{ name: 'Vercel', icon: 'vercel' },
 		{ name: 'Azure', icon: 'azure' },
 		{ name: 'Linux', icon: 'linux' },
 	];

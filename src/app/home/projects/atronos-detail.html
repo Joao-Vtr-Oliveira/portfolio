@@ -1,0 +1,55 @@
+<div class="forge-detail">
+	<header class="detail-header">
+		<div>
+			<p class="detail-kicker">Projeto em destaque / Plataforma full-stack</p>
+			<h2 mat-dialog-title id="atronos-detail-title">Atronos Forge</h2>
+		</div>
+		<button type="button" class="detail-close" aria-label="Fechar detalhes do Atronos Forge" (click)="dialogRef.close()">✕</button>
+	</header>
+	<mat-dialog-content class="detail-content">
+		<p class="detail-lead">Uma plataforma para D&amp;D construída em repositórios independentes. O Hub apresenta os produtos; Player e Dungeon Master atendem a momentos diferentes da mesa. API e componentes de apresentação compartilhados criam pontos de integração sem fundir as aplicações.</p>
+
+		<section aria-labelledby="hub-heading" class="detail-section">
+			<div class="detail-heading"><img src="/images/atronos-forge/hub-mark.svg" width="42" height="42" alt="" /><div><span>01 / ENTRADA PÚBLICA</span><h3 id="hub-heading">Hub</h3></div></div>
+			<p>Porta pública da plataforma, independente dos produtos e sem atuar como proxy da API. Landing Angular gerada estaticamente em <strong>pt-BR, en e es</strong>, com SEO, URLs localizadas e metadados para compartilhamento.</p>
+			<figure class="detail-wide"><img src="/images/atronos-forge/hub.webp" alt="Página inicial pública do Hub, apresentando o Player e o Dungeon Master como experiências da mesma plataforma" width="1440" height="950" loading="lazy" /><figcaption>Hub público · desktop</figcaption></figure>
+		</section>
+
+		<section aria-labelledby="player-heading" class="detail-section">
+			<div class="detail-heading"><img src="/images/atronos-forge/player-mark.svg" width="42" height="42" alt="" /><div><span>02 / PARA QUEM JOGA</span><h3 id="player-heading">Player</h3></div></div>
+			<p>Experiência <strong>mobile-first e offline-first</strong> para D&amp;D 5e 2014: Builder, ficha, progressão e multiclasse, cockpit de sessão, habilidades, recursos, magias, inventário e Compendium. PWA instalável com estado local em IndexedDB; autenticação, sync e backup cloud têm fronteira própria na API. Interface em três idiomas; o conteúdo das regras mantém a língua da fonte.</p>
+			<figure class="detail-mobile"><img src="/images/atronos-forge/player-play-mobile.webp" alt="Player no celular: ficha de teste no cockpit Jogar, com HP, CA, iniciativa e ações de sessão" width="390" height="844" loading="lazy" /><figcaption>Jogar · captura mobile de ficha sintética</figcaption></figure>
+		</section>
+
+		<section aria-labelledby="dm-heading" class="detail-section">
+			<div class="detail-heading"><img src="/images/atronos-forge/dm-mark.svg" width="42" height="42" alt="" /><div><span>03 / PARA QUEM MESTRA</span><h3 id="dm-heading">Dungeon Master</h3></div></div>
+			<p>Ferramenta operacional para preparar e conduzir sessões: workspaces de campanha, encontros, Battle Tracker, bestiário, homebrew e calendário. O fluxo de campanha permanece local-first, com backup JSON e importação de workspace remoto; integração cloud completa com o Player ainda está em desenvolvimento.</p>
+			<figure class="detail-wide"><img src="/images/atronos-forge/dm-encounter-desktop.webp" alt="Dungeon Master no desktop: construtor de encontros com campos para participantes, contexto e eventos de combate" width="1440" height="745" loading="lazy" /><figcaption>Construtor de encontros · captura desktop de campanha local de demonstração</figcaption></figure>
+		</section>
+
+		<section aria-labelledby="architecture-heading" class="detail-section">
+			<p class="detail-kicker">DECISÕES DE ENGENHARIA</p><h3 id="architecture-heading">Fronteiras que servem o produto</h3>
+			<ul class="detail-decisions">
+				<li><strong>A mesa não depende da rede.</strong> IndexedDB guarda personagem e runtime no Player mesmo com sync cloud; dados permanentes e estado de sessão são modelos distintos. Dados físicos continuam fazendo parte do fluxo.</li>
+				<li><strong>Engine não é dataset.</strong> Regras do personagem são separadas da origem 5eTools; o Compendium passa por modelos canônicos, e não define diretamente o formato do personagem.</li>
+				<li><strong>Reutilização sem acoplamento.</strong> Player e DM são apps independentes; <code>&#64;atronos-forge/ui</code> versiona componentes de apresentação de Compendium consumidos por ambos, sem absorver regras, navegação ou persistência.</li>
+				<li><strong>Estado preparado não é combate em curso.</strong> No DM, CreatureSheet, Encounter e BattleEncounter representam ficha reutilizável, preparação e runtime de batalha separadamente.</li>
+			</ul>
+			<p class="detail-stack">Angular + TypeScript no frontend; Node.js + TypeScript + Fastify na API; Supabase Auth e PostgreSQL como infraestrutura, com autenticação, autorização e persistência sob contratos server-side. Testes automatizados, CI e processos de build/deploy por repositório acompanham a evolução do produto.</p>
+		</section>
+
+		<section aria-labelledby="practice-heading" class="detail-section">
+			<p class="detail-kicker">ALÉM DAS TELAS</p><h3 id="practice-heading">O que aprofundei construindo a plataforma</h3>
+			<ul class="detail-decisions">
+				<li><strong>Infraestrutura.</strong> Ambientes locais com Supabase e API, aplicações publicadas separadamente e API em servidor Ubuntu atrás de Cloudflare Tunnel. Configuração e operação passaram a fazer parte das decisões de produto.</li>
+				<li><strong>CI/CD com gates.</strong> Pipelines por repositório verificam tipos, testes e builds; o Hub separa CI de publicação manual em produção. Deploy não é sinônimo de passar nos testes.</li>
+				<li><strong>Segurança nas fronteiras.</strong> Autorização de recursos cloud na API, identidade derivada da sessão, RLS para dados de conta e chaves privilegiadas fora do navegador e do Git.</li>
+				<li><strong>IA com contexto e revisão.</strong> Usei ferramentas de IA como apoio à investigação e documentação. O DM também exporta contexto de campanha para geração assistida e valida arquivos importados antes de aplicar mudanças.</li>
+			</ul>
+		</section>
+	</mat-dialog-content>
+	<footer class="detail-footer">
+		<a href="https://atronos-forge.com" target="_blank" rel="noopener noreferrer">Explorar o Hub ↗</a>
+		<a href="https://player.atronos-forge.com/" target="_blank" rel="noopener noreferrer">Abrir o Player ↗</a>
+	</footer>
+</div>

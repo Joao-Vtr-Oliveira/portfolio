@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+	<title id="title">Atronos Forge Dungeon Master</title>
+	<desc id="desc">Escudo vermelho com um cristal geométrico, sem fundo.</desc>
+	<path d="M256 68 414 152v156c0 92-60 154-158 192-98-38-158-100-158-192V152L256 68Z" fill="#ef4444" />
+	<path d="M256 106 376 170v136c0 66-42 112-120 146-78-34-120-80-120-146V170l120-64Z" fill="#241416" />
+	<path d="m256 142 82 106-82 148-82-148 82-106Z" fill="#f87171" />
+	<path d="m256 142 82 106-82 39V142Z" fill="#f5f2f8" />
+	<path d="m174 248 82 39 82-39-82 148-82-148Z" fill="#b91c1c" />
+</svg>

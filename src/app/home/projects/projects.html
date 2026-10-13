@@ -10,6 +10,25 @@
 			Uma seleção de aplicações que representam minha evolução e meus desafios técnicos mais relevantes.
 		</p>
 
+		<article class="forge-feature" aria-labelledby="forge-title">
+			<div class="forge-feature-copy">
+				<p class="forge-eyebrow">Produto full-stack · em desenvolvimento ativo</p>
+				<img class="forge-wordmark" src="/images/atronos-forge/wordmark.svg" alt="Atronos Forge" width="1200" height="320" />
+				<h3 id="forge-title" class="forge-title">Atronos Forge</h3>
+				<p class="forge-tagline">Uma plataforma para os dois lados da mesa.</p>
+				<p class="forge-summary">Hub público, Player mobile-first e Dungeon Master para preparação e sessão. Experiências independentes para D&amp;D, com API compartilhada e uma biblioteca de UI onde há reutilização real.</p>
+				<p class="forge-meta">Angular + TypeScript <span aria-hidden="true">·</span> Node.js + Fastify <span aria-hidden="true">·</span> PostgreSQL / Supabase <span aria-hidden="true">·</span> PT-BR · EN · ES</p>
+				<div class="forge-actions">
+					<button type="button" class="forge-button" (click)="openAtronosDetail()">Explorar o projeto <span aria-hidden="true">↗</span></button>
+					<a href="https://atronos-forge.com" target="_blank" rel="noopener noreferrer">Acessar o Hub <span aria-hidden="true">↗</span></a>
+				</div>
+			</div>
+			<div class="forge-feature-visual">
+				<img src="/images/atronos-forge/player-play-mobile.webp" alt="Atronos Forge Player: cockpit de sessão mobile com vida, defesa e ações da ficha de demonstração" width="390" height="844" loading="lazy" />
+				<span>PLAYER / MOBILE-FIRST</span>
+			</div>
+		</article>
+
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 			@for (project of projects(); track project.id) {
 

@@ -11,34 +11,6 @@ interface Project {
 
 export const projects: Project[] = [
 	{
-		id: 6,
-		name: 'D&D Dungeon Master Helper',
-		bio: `Ferramenta para mestres de D&D com foco em uso local durante as sessões.
-
-- Encontros salvos e editáveis, Encounter Hub e Battle Tracker.
-- Fichas homebrew e calendário com world clock.
-- Backup completo em JSON e sincronização dos dados do projeto.
-- Persistência local com localStorage para manter o fluxo da mesa organizado.`,
-		deployLink: 'https://dnd-dm-helper.vercel.app',
-		imgSrc: '/images/projects/dnd-dm-helper.png',
-		featured: true,
-		tech: 'https://skillicons.dev/icons?i=angular,ts,tailwind',
-	},
-	{
-		id: 7,
-		name: 'D&D Player Helper',
-		bio: `Cockpit mobile-first e offline-first para jogadores de D&D 5e 2014.
-
-- Criação, progressão e gerenciamento de múltiplas fichas.
-- Jogar, Ficha, Habilidades, Magias e Inventário em uma experiência integrada.
-- Character Engine com suporte a multiclasse, recursos, descansos e histórico.
-- PWA instalável, compêndio local e persistência offline com IndexedDB.`,
-		deployLink: 'https://dnd-player-helper.vercel.app',
-		imgSrc: '/images/projects/dnd-player-helper.png',
-		featured: true,
-		tech: 'https://skillicons.dev/icons?i=angular,ts,tailwind,pwa',
-	},
-	{
 		id: 1,
 		name: 'Brasil API',
 		bio: `Aplicação que consome a BrasilAPI para buscar dados como DDD, CEP e CNPJ.

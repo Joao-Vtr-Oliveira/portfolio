@@ -6,6 +6,44 @@
   line-height: 1.6;
 }
 
+.forge-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(200px, .7fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  border: 1px solid #675094;
+  border-radius: 1.5rem;
+  background: radial-gradient(circle at 85% 30%, #36205e 0, transparent 50%), #12101d;
+  color: #eee9f8;
+  box-shadow: 0 22px 55px rgb(7 3 20 / .38);
+}
+.forge-eyebrow, .forge-meta, .forge-feature-visual span { font-size: .78rem; letter-spacing: .12em; color: #bea7f1; }
+.forge-eyebrow { text-transform: uppercase; }
+.forge-wordmark { display: block; width: min(100%, 390px); height: auto; margin: 1.25rem 0 1.4rem; border-radius: .5rem; }
+.forge-title { font-size: clamp(1.65rem, 3vw, 2.6rem); line-height: 1.15; font-weight: 700; }
+.forge-tagline { margin-top: .4rem; color: #c6adff; font-size: clamp(1rem, 2vw, 1.25rem); }
+.forge-summary { max-width: 39rem; margin-top: 1rem; line-height: 1.7; color: #d4cde0; }
+.forge-meta { margin: 1.4rem 0; line-height: 1.8; letter-spacing: .025em; }
+.forge-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.forge-actions a, .forge-button { color: #f4edff; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.forge-button { padding: .8rem 1.1rem; border-radius: .75rem; background: #794bd6; text-decoration: none; cursor: pointer; }
+.forge-button:hover { background: #9165eb; }
+.forge-actions :is(a,button):focus-visible { outline: 3px solid #bba7ff; outline-offset: 4px; }
+.forge-feature-visual { justify-self: center; max-width: 225px; text-align: center; }
+.forge-feature-visual img { display: block; width: 100%; height: auto; max-height: 440px; object-fit: contain; object-position: top; border: 1px solid #574374; border-radius: 1.25rem; }
+.forge-feature-visual span { display: block; margin-top: .8rem; }
+@media (max-width: 650px) {
+  .forge-feature { grid-template-columns: 1fr; }
+  .forge-feature-visual { max-width: 200px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-card, .project-card-image { transition: none; }
+  .project-card:hover, .project-card:hover .project-card-image { transform: none; }
+}
+
 .customBtn {
   height: 40px;
 }

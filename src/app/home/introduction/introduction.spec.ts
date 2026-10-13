@@ -26,4 +26,8 @@ describe('Introduction', () => {
     );
     expect(h2.textContent).toContain('João Vitor');
   })
+  it('links the current full-stack platform from the introduction', () => {
+    expect(fixture.nativeElement.textContent).toContain('Atronos Forge');
+    expect(fixture.nativeElement.querySelector('a[href="#projetos"]')).toBeTruthy();
+  });
 });

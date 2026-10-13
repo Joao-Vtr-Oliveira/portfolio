@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">Atronos Forge</title>
+  <desc id="desc">Logo horizontal Atronos Forge em fundo escuro.</desc>
+  <rect width="1200" height="320" rx="48" fill="#0d0e15"/>
+  <g transform="translate(54 40) scale(.46875)">
+    <path d="M256 68 414 152v156c0 92-60 154-158 192-98-38-158-100-158-192V152L256 68Z" fill="#8b5cf6"/>
+    <path d="M256 106 376 170v136c0 66-42 112-120 146-78-34-120-80-120-146V170l120-64Z" fill="#171721"/>
+    <path d="m256 142 82 106-82 148-82-148 82-106Z" fill="#a78bfa"/>
+    <path d="m256 142 82 106-82 39V142Z" fill="#f5f2f8"/>
+    <path d="m174 248 82 39 82-39-82 148-82-148Z" fill="#6d45d8"/>
+  </g>
+  <text x="356" y="201" fill="#f5f2f8" font-family="Georgia, 'Times New Roman', serif" font-size="82" letter-spacing="1">Atronos Forge</text>
+  <path d="M362 231h580" stroke="#8b5cf6" stroke-opacity=".62" stroke-width="3"/>
+</svg>
