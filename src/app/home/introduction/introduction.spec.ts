@@ -30,6 +30,15 @@ describe('Introduction', () => {
     expect(fixture.nativeElement.textContent).toContain('Atronos Forge');
     expect(fixture.nativeElement.querySelector('a[href="#projetos"]')).toBeTruthy();
   });
+  it('downloads the updated resume without replacing the original file', () => {
+    expect(fixture.nativeElement.querySelector('a[href="/docs/Curriculo_Joao_Vitor_Oliveira_Atualizado.pdf"]')).toBeTruthy();
+  });
+  it('downloads the English resume on the English route', () => {
+    component.i18n.setFromUrl('/en');
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('a[href="/docs/Joao_Vitor_Oliveira_Resume_EN.pdf"]')).toBeTruthy();
+  });
   it('scrolls to Atronos Forge without navigating away from the selected locale', () => {
     const target = document.createElement('div');
     target.id = 'projetos';
