@@ -17,8 +17,8 @@ const clockFormat = new Intl.DateTimeFormat('pt-BR', {
 export class Introduction {
 	readonly i18n = inject(LocaleService);
 	readonly resumePath = computed(() => this.i18n.locale() === 'en'
-		? '/docs/Joao_Vitor_Oliveira_Resume_EN.pdf'
-		: '/docs/Curriculo_Joao_Vitor_Oliveira_Atualizado.pdf');
+		? '/docs/updated/Joao_Vitor_Oliveira_Resume_EN_ATS.pdf'
+		: '/docs/updated/Curriculo_Joao_Vitor_Oliveira_ATS.pdf');
 
 	readonly words = computed(() => this.i18n.t('hero.words').split('|'));
 	private readonly wordIndex = signal(0);

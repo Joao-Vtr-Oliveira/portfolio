@@ -29,4 +29,11 @@ describe('ContactComponent', () => {
     );
     expect(anchor.href).toContain('84169215');
   })
+  it('downloads the localized ATS resume PDF', () => {
+    expect(component.resumePath()).toBe('/docs/updated/Curriculo_Joao_Vitor_Oliveira_ATS.pdf');
+
+    component.i18n.setFromUrl('/en');
+
+    expect(component.resumePath()).toBe('/docs/updated/Joao_Vitor_Oliveira_Resume_EN_ATS.pdf');
+  });
 });
