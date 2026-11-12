@@ -102,6 +102,7 @@
 	color: var(--ember);
 	-webkit-text-fill-color: var(--ember);
 	font-style: normal;
+	letter-spacing: 0;
 }
 
 @keyframes rise {
@@ -389,7 +390,7 @@
 	background: var(--ember);
 	color: var(--ink);
 	transform: rotate(-1.6deg);
-	box-shadow: 0 30px 80px oklch(0.705 0.196 40 / 0.18);
+	box-shadow: 0 30px 80px oklch(0.705 0.196 293 / 0.18);
 }
 
 .band__track {

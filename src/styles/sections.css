@@ -213,7 +213,7 @@
 	padding: clamp(26px, 4vw, 60px);
 	background:
 		radial-gradient(70% 90% at 100% 20%, oklch(0.38 0.15 293 / 0.5), transparent 65%),
-		radial-gradient(60% 70% at 0% 100%, oklch(0.42 0.13 40 / 0.22), transparent 70%),
+		radial-gradient(60% 70% at 0% 100%, oklch(0.42 0.13 293 / 0.22), transparent 70%),
 		var(--ink-2);
 }
 
@@ -300,7 +300,7 @@
 	position: absolute;
 	inset: 18% 10% 10% 18%;
 	border-radius: 50%;
-	background: oklch(0.705 0.196 40 / 0.35);
+	background: oklch(0.705 0.196 293 / 0.35);
 	filter: blur(80px);
 	animation: breathe 6s var(--ease) infinite alternate;
 }
@@ -532,7 +532,7 @@
 .stack__code {
 	padding: 5px 10px;
 	border-radius: var(--r-pill);
-	background: oklch(0.705 0.196 40 / 0.14);
+	background: oklch(0.705 0.196 293 / 0.14);
 	color: var(--ember);
 	font-family: var(--font-mono);
 	font-size: 10.5px;
@@ -587,8 +587,8 @@
 }
 
 .stack__tile:hover {
-	border-color: oklch(0.705 0.196 40 / 0.6);
-	background: oklch(0.705 0.196 40 / 0.08);
+	border-color: oklch(0.705 0.196 293 / 0.6);
+	background: oklch(0.705 0.196 293 / 0.08);
 	transform: translate3d(0, -4px, 0);
 }
 

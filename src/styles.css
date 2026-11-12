@@ -5,7 +5,7 @@
 @import "./styles/repo.css";
 
 /* ============================================================
-   TOKENS — "forja escura": ink, bone, ember + violet heritage
+   TOKENS — "forja escura": ink, bone + violet
    ============================================================ */
 :root {
 	--ink: oklch(0.155 0.013 295);
@@ -17,9 +17,9 @@
 	--bone-2: oklch(0.82 0.012 85);
 	--muted: oklch(0.648 0.014 290);
 
-	--ember: oklch(0.705 0.196 40);
-	--ember-deep: oklch(0.628 0.182 38);
-	--ember-hi: oklch(0.8 0.148 52);
+	--ember: oklch(0.705 0.196 293);
+	--ember-deep: oklch(0.628 0.182 293);
+	--ember-hi: oklch(0.8 0.148 293);
 	--violet: oklch(0.64 0.196 293);
 	--violet-deep: oklch(0.54 0.192 293);
 
@@ -180,7 +180,7 @@ img {
 	left: -10vw;
 	width: 48vw;
 	height: 48vw;
-	background: oklch(0.705 0.196 40 / 0.17);
+	background: oklch(0.705 0.196 293 / 0.17);
 	animation: drift1 34s var(--ease) infinite alternate;
 }
 
@@ -198,7 +198,7 @@ img {
 	left: 28vw;
 	width: 34vw;
 	height: 34vw;
-	background: oklch(0.628 0.182 38 / 0.1);
+	background: oklch(0.628 0.182 293 / 0.1);
 	animation: drift3 50s var(--ease) infinite alternate;
 }
 
@@ -317,7 +317,7 @@ body::before {
 	border-radius: inherit;
 	pointer-events: none;
 	opacity: 0;
-	background: radial-gradient(320px circle at var(--mx) var(--my), oklch(0.705 0.196 40 / 0.13), transparent 62%);
+	background: radial-gradient(320px circle at var(--mx) var(--my), oklch(0.705 0.196 293 / 0.13), transparent 62%);
 	transition: opacity var(--t-mid) var(--ease);
 }
 
@@ -497,13 +497,13 @@ body::before {
 	height: 7px;
 	border-radius: 50%;
 	background: var(--ember);
-	box-shadow: 0 0 0 0 oklch(0.705 0.196 40 / 0.55);
+	box-shadow: 0 0 0 0 oklch(0.705 0.196 293 / 0.55);
 	animation: pulse 2.6s var(--ease) infinite;
 }
 
 @keyframes pulse {
-	70% { box-shadow: 0 0 0 9px oklch(0.705 0.196 40 / 0); }
-	100% { box-shadow: 0 0 0 0 oklch(0.705 0.196 40 / 0); }
+	70% { box-shadow: 0 0 0 9px oklch(0.705 0.196 293 / 0); }
+	100% { box-shadow: 0 0 0 0 oklch(0.705 0.196 293 / 0); }
 }
 
 /* image frame with gradient fallback behind the image */
@@ -511,7 +511,7 @@ body::before {
 	position: relative;
 	overflow: hidden;
 	background:
-		radial-gradient(120% 95% at 18% 0%, oklch(0.36 0.095 40 / 0.55), transparent 58%),
+		radial-gradient(120% 95% at 18% 0%, oklch(0.36 0.095 293 / 0.55), transparent 58%),
 		radial-gradient(110% 90% at 92% 100%, oklch(0.33 0.11 293 / 0.45), transparent 62%),
 		var(--ink-2);
 }

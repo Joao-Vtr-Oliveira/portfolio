@@ -131,7 +131,7 @@
 .commit__tag--fix { background: oklch(0.8 0.15 85 / 0.16); color: oklch(0.85 0.15 85); }
 .commit__tag--test { background: oklch(0.7 0.14 240 / 0.16); color: oklch(0.78 0.13 240); }
 .commit__tag--refactor { background: oklch(0.64 0.196 293 / 0.18); color: oklch(0.76 0.15 293); }
-.commit__tag--docs { background: oklch(0.705 0.196 40 / 0.16); color: var(--ember); }
+.commit__tag--docs { background: oklch(0.705 0.196 293 / 0.16); color: var(--ember); }
 
 .commit__msg {
 	overflow: hidden;
