@@ -21,36 +21,8 @@ export class App implements OnInit {
 	document = inject(DOCUMENT);
 
 	ngOnInit(): void {
-		const description = this.locale.isEnglish()
-			? 'Portfolio of João Vitor de Oliveira, a full-stack developer building web products and Atronos Forge.'
-			: 'Portfólio de João Vitor de Oliveira, desenvolvedor full-stack e criador do Atronos Forge.';
-		const locale = this.locale.locale();
-		this.title.setTitle(locale === 'en' ? 'João Vitor — Full-stack developer' : 'João Vitor — Desenvolvedor Fullstack');
-		const imageUrl = 'https://portfolio-joao-v.vercel.app/images/home.png';
-		const url = `https://portfolio-joao-v.vercel.app/${locale}`;
-
-		this.meta.updateTag({ name: 'description', content: description });
-
-		this.meta.updateTag({
-			property: 'og:title',
-			content: this.title.getTitle(),
-		});
-		this.meta.updateTag({ property: 'og:description', content: description });
-		this.meta.updateTag({ property: 'og:image', content: imageUrl });
-		this.meta.updateTag({ property: 'og:url', content: url });
-		this.meta.updateTag({ property: 'og:type', content: 'website' });
-		this.meta.updateTag({ property: 'og:locale', content: locale === 'en' ? 'en_US' : 'pt_BR' });
-
-		this.meta.updateTag({
-			name: 'twitter:title',
-			content: this.title.getTitle(),
-		});
-		this.meta.updateTag({ name: 'twitter:description', content: description });
-		this.meta.updateTag({ name: 'twitter:image', content: imageUrl });
-		this.meta.updateTag({
-			name: 'twitter:card',
-			content: 'summary_large_image',
-		});
+		this.locale.setFromUrl(this.router.url);
+		this.ngOnInitMetadata();
 
 		this.router.events
 			.pipe(filter((event) => event instanceof NavigationEnd))
@@ -70,17 +42,25 @@ export class App implements OnInit {
 	private ngOnInitMetadata(): void {
 		const locale = this.locale.locale();
 		const description = this.locale.isEnglish()
-			? 'Portfolio of João Vitor de Oliveira, a full-stack developer building web products and Atronos Forge.'
-			: 'Portfólio de João Vitor de Oliveira, desenvolvedor full-stack e criador do Atronos Forge.';
-		this.title.setTitle(locale === 'en' ? 'João Vitor — Full-stack developer' : 'João Vitor — Desenvolvedor Fullstack');
+			? 'João Vitor de Oliveira, full-stack developer working with Angular, TypeScript, Node.js, and .NET. Explore my projects, experience, and Atronos Forge.'
+			: 'João Vitor de Oliveira, desenvolvedor fullstack com Angular, TypeScript, Node.js e .NET. Conheça meus projetos, minha experiência e o Atronos Forge.';
+		const imageUrl = 'https://portfolio-joao-v.vercel.app/images/j%C3%A3o.jpg';
+		this.title.setTitle(locale === 'en' ? 'João Vitor de Oliveira — Full-stack Developer' : 'João Vitor de Oliveira — Desenvolvedor Fullstack');
 		this.document.documentElement.lang = locale;
 		this.meta.updateTag({ name: 'description', content: description });
 		this.meta.updateTag({ property: 'og:title', content: this.title.getTitle() });
 		this.meta.updateTag({ property: 'og:description', content: description });
+		this.meta.updateTag({ property: 'og:site_name', content: locale === 'en' ? 'João Vitor de Oliveira — Portfolio' : 'João Vitor de Oliveira — Portfólio' });
+		this.meta.updateTag({ property: 'og:type', content: 'website' });
+		this.meta.updateTag({ property: 'og:image', content: imageUrl });
+		this.meta.updateTag({ property: 'og:image:alt', content: 'João Vitor de Oliveira' });
 		this.meta.updateTag({ property: 'og:url', content: `https://portfolio-joao-v.vercel.app/${locale}` });
 		this.meta.updateTag({ property: 'og:locale', content: locale === 'en' ? 'en_US' : 'pt_BR' });
 		this.meta.updateTag({ name: 'twitter:title', content: this.title.getTitle() });
 		this.meta.updateTag({ name: 'twitter:description', content: description });
+		this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+		this.meta.updateTag({ name: 'twitter:image', content: imageUrl });
+		this.meta.updateTag({ name: 'twitter:image:alt', content: 'João Vitor de Oliveira' });
 		const canonical = this.document.querySelector<HTMLLinkElement>('link[rel="canonical"]') ?? this.document.createElement('link');
 		canonical.rel = 'canonical';
 		canonical.href = `https://portfolio-joao-v.vercel.app/${locale}`;
